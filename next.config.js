@@ -39,7 +39,8 @@ const withTM = require('next-transpile-modules')([
   '@react-spectrum/view',
   '@react-spectrum/well',
   '@spectrum-icons/ui',
-  '@spectrum-icons/workflow'
+  '@spectrum-icons/workflow',
+  '@react-spectrum/contextualhelp'
 ]);
 
 module.exports = withTM({   
