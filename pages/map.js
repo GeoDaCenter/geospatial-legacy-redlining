@@ -39,7 +39,7 @@ export default function Home() {
       });
       
       setView({ ...viewport, pitch: 0, bearing: 0 });
-    }
+    } // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
@@ -62,7 +62,7 @@ export default function Home() {
 
       setHasPanned(true)
       setView({ ...viewport, pitch: 0, bearing: 0 });
-    }
+    } // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [query.x0]);
 
 
@@ -80,7 +80,7 @@ export default function Home() {
         y0: Math.round(y0 * 100) / 100,
         y1: Math.round(y1 * 100) / 100
       },
-    })
+    }) // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [JSON.stringify(activeLayers), JSON.stringify(view)])
 
   return (
@@ -115,10 +115,10 @@ export default function Home() {
       </section>
       <section className={styles.bottomRight}>
         <div className={styles.legend}>
-          {activeLayers.map(layer => <Legend {...{ ...bins[layer], title: LayerList.find(f => f.id === layer)?.label }} />)}
+          {activeLayers.map(layer => <Legend key={`Legend-${layer}`} {...{ ...bins[layer], title: LayerList.find(f => f.id === layer)?.label }} />)}
         </div>
         <div className={styles.attributions}>
-          {activeLayers.map(layer => <>{attributions[layer] || ''}<br /></>)}
+          {activeLayers.map(layer => <span key={`attribution-${layer}`}>{attributions[layer] || ''}<br /></span>)}
           Map Data: © <a href="https://www.mapbox.com/about/maps/" target="_blank" rel="noreferrer">Mapbox</a> © <a href="https://www.openstreetmap.org/about/" target="_blank" rel="noreferrer">OpenStreetMap</a> <a href="https://www.mapbox.com/contribute/#/?q=&l=2.1234%2F32.9547%2F11" target="_blank" rel="noreferrer">Improve this map</a>
         </div>
       </section>

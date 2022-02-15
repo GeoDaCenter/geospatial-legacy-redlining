@@ -15,11 +15,11 @@ export default function Legend({
             <span style={{ backgroundColor: 'rgb(240,240,240)' }} className={styles.legendSwatch}>&nbsp;</span>
             <p>Zero</p>
         </div>}
-        {!!categorical && bins.map((bin, i) => <div className={styles.legendEntry}>
+        {!!categorical && bins.map((bin, i) => <div className={styles.legendEntry} key={`Legend-entry-${i}`}>
             <span style={{ backgroundColor: `rgb(${colors[i].join(',')})` }} className={styles.legendSwatch}>&nbsp;</span>
             <p>{labels ? labels[i] : bin}</p>
         </div>)}
-        {!categorical && bins.map((bin, i) => <div className={styles.legendEntry}>
+        {!categorical && bins.map((bin, i) => <div className={styles.legendEntry} key={`Legend-entry-${i}`}>
             <span style={{ backgroundColor: `rgb(${colors[i].join(',')})` }} className={styles.legendSwatch}>&nbsp;</span>
             <p>{labels ? labels[i] : i === 0 ? `< ${bin}` : `${bins[i - 1]} - ${bin}`}</p>
         </div>)}

@@ -1,6 +1,6 @@
 import Head from 'next/head'
 import styles from '../styles/Home.module.css'
-
+import Link from 'next/link'
 export default function Home() {
   return (
     <div className={styles.container}>
@@ -14,15 +14,16 @@ export default function Home() {
         <h1 className={styles.title}>
           The Geospatial Legacy of American Apartheid
         </h1>
+        <Link href="/map">
           <a
-            href="/map"
             className={styles.card}
           >
             <h2>Map</h2>
             <p>
-              See how the painful histories of slavery, sundown towns, and other racist practices impact communities' ability to thrive today.
+              See how the painful histories of slavery, sundown towns, and other racist practices impact communities&apos; ability to thrive today.
             </p>
           </a>
+          </Link>
       </main>
 
       {/* <footer className={styles.footer}>
