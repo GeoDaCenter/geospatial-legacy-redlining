@@ -108,7 +108,6 @@ export default function Home() {
         >
           {(item) => <Item>{item.label}</Item>}
         </ListBox>
-        <i>Not yet available: Lynchings</i>
       </section>
       <section className={styles.map}>
         <MapComponent {...{ activeLayers, view, setView, bins, DATA_URL }} />

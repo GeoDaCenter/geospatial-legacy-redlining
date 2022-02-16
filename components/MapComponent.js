@@ -84,7 +84,24 @@ export default function MapComponent({
                 lineWidthMaxPixels: 1
               })
         ],
-        lynchings: [],
+        lynchings: [
+            new GeoJsonLayer({
+                id: "lynchings-layer",
+                data: DATA_URL.lynchings,
+                pickable: true,
+                stroked: true,
+                filled: true,
+                extruded: false,
+                getFillColor: d => getColor({
+                    ...bins.lynchings,
+                    val: d?.properties['LYNCHINGS']||0
+                }),
+                getLineColor: [0, 0, 0],
+                getLineWidth:1,
+                lineWidthMinPixels:1,
+                lineWidthMaxPixels:1,
+                opacity:0.7
+            }),],
         redlining: [
             new GeoJsonLayer({
                 id: "redlining-layer",
