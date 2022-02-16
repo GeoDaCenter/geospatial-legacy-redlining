@@ -1,3 +1,4 @@
+import { useState } from "react";
 import DeckGL from "@deck.gl/react";
 import { GeoJsonLayer, ScatterplotLayer } from "@deck.gl/layers";
 import MapboxGLMap from "react-map-gl";
@@ -5,7 +6,7 @@ import styles from '../styles/Map.module.css'
 
 const getColor = ({
     val, bins, colors, separateZero }) => {
-    if (separateZero && val === 0) return [240, 240, 240, 0]
+    if (separateZero && val === 0) return [50, 50, 50, 120]
     for (let i = 0; i < bins.length; i++) {
         if (val <= bins[i]) return colors[i]
     }
@@ -24,11 +25,17 @@ export default function MapComponent({
     activeLayers = ["slavery"],
     view,
     setView,
+    setPortal,
     bins,
     DATA_URL
 }) {
+    const [tooltipData, setTooltipData] = useState({
+        data: null,
+        x: null,
+        y: null
+    })
 
-    const dotScale = view.zoom > 10 ? 150 : (14-view.zoom)**4
+    const dotScale = view.zoom > 10 ? 250 : ((14 - view.zoom) ** 4) * 1.5
     const layers = {
         slavery: [
             new GeoJsonLayer({
@@ -40,13 +47,36 @@ export default function MapComponent({
                 extruded: false,
                 getFillColor: d => getColor({
                     ...bins.slavery,
-                    val: d?.properties['Slave Population']||0
+                    val: d?.properties['Slave Population'] || 0
                 }),
                 getLineColor: [255, 255, 255],
-                getLineWidth:1,
-                lineWidthMinPixels:1,
-                lineWidthMaxPixels:1,
-                opacity:0.7
+                getLineWidth: 1,
+                lineWidthMinPixels: 1,
+                lineWidthMaxPixels: 1,
+                opacity: 0.7,
+                onHover: ({ object, x, y }) => !!object?.properties?.NHGISNAM ? setTooltipData({
+                    x,
+                    y,
+                    data: [{
+                        title: `${object?.properties?.NHGISNAM}, ${object?.properties?.STATENAM || 'Undesignated'}`,
+                        text: ''
+                    }, {
+                        title: `Total Population`,
+                        text: Math.round((object?.properties['Total Population'] || 0) * 100) / 100
+                    }, {
+                        title: `Slave Population`,
+                        text: Math.round((object?.properties['Slave Population'] || 0) * 100) / 100
+                    }, {
+                        title: `Percent Slave Population`,
+                        text: `${Math.round((object?.properties['Percent Pop Slave '] || 0) * 100) / 100}%`
+                    }, {
+                        title: `Free People of Color`,
+                        text: Math.round((object?.properties['Free Colored Population'] || 0) * 100) / 100
+                    }, {
+                        title: `Percent Free People of Color`,
+                        text: `${Math.round((object?.properties['Percent Pop Free of Color'] || 0) * 100) / 100}%`
+                    }]
+                }) : setTooltipData({ x: null, y: null, data: null })
             }),
         ],
         sundown: [
@@ -60,29 +90,72 @@ export default function MapComponent({
                     val: d?.properties['confirmed']
                 }),
                 getLineColor: d => [0, 0, 0],
-                pickable:false,
+                pickable: true,
                 stroked: true,
-                filled:true,
+                filled: true,
                 lineWidthScale: 20,
                 lineWidthMinPixels: 1,
-                lineWidthMaxPixels: 1
-              })
+                lineWidthMaxPixels: 1,
+                onHover: ({ object, x, y }) => !!object?.properties?.name ? setTooltipData({
+                    x,
+                    y,
+                    data: [{
+                        title: `${object?.properties?.name}, ${object?.properties?.state}`,
+                        text: ''
+                    }, {
+                        title: `Sundown Confirmation`,
+                        text: {
+                            1: "Don't Know",
+                            2: "Possible",
+                            3: "Probable",
+                            4: "Surely",
+                            5: "Unlikely / Always Biracial",
+                            6: "Black Town or Township"
+                        }[object?.properties['confirmed']]
+                    }, {
+                        title: 'Click for more info'
+                    }]
+                }) : setTooltipData({ x: null, y: null, data: null }),
+                onClick: ({ object }) => setPortal(`https://justice.tougaloo.edu/sundowntown/${object?.properties?.name?.replace(/\s/g, '-').toLowerCase()}-${object?.properties?.state.replace(/\s/g, '-').toLowerCase()}/`)
+            })
         ],
-        violence:  [
+        violence: [
             new ScatterplotLayer({
                 id: 'mass-violence-layer',
                 data: DATA_URL.violence,
                 getPosition: d => d?.geometry?.coordinates,
                 getRadius: dotScale,
-                getFillColor: [255,0,0],
+                getFillColor: [0, 0, 0],
                 getLineColor: d => [0, 0, 0],
-                pickable:false,
+                pickable: true,
                 stroked: true,
-                filled:true,
+                filled: true,
                 lineWidthScale: 20,
                 lineWidthMinPixels: 1,
-                lineWidthMaxPixels: 1
-              })
+                lineWidthMaxPixels: 1,
+                onHover: ({ object, x, y }) => !!object?.properties?.name ? setTooltipData({
+                    x,
+                    y,
+                    data: [{
+                        title: object?.properties?.name,
+                        text: object?.properties?.Date
+                    }, {
+                        title: 'Fatalities',
+                        text: object?.properties?.Fatalities                        
+                    }, {
+                        title: 'Refugees',
+                        text: object?.properties?.Regugees                        
+                    }, {
+                        title: '',
+                        text: object?.properties?.['Narrative/Notes']
+                    },{
+                        title: 'Click for more info',
+                        text: ''
+                    }]
+                }) : setTooltipData({ x: null, y: null, data: null }),
+                onClick: ({ object }) => setPortal(object?.properties?.Source)
+
+            })
         ],
         lynchings: [
             new GeoJsonLayer({
@@ -94,13 +167,24 @@ export default function MapComponent({
                 extruded: false,
                 getFillColor: d => getColor({
                     ...bins.lynchings,
-                    val: d?.properties['LYNCHINGS']||0
+                    val: d?.properties['LYNCHINGS'] || 0
                 }),
                 getLineColor: [0, 0, 0],
-                getLineWidth:1,
-                lineWidthMinPixels:1,
-                lineWidthMaxPixels:1,
-                opacity:0.7
+                getLineWidth: 1,
+                lineWidthMinPixels: 1,
+                lineWidthMaxPixels: 1,
+                opacity: 0.7,
+                onHover: ({ object, x, y }) => !!object?.properties?.NAME ? setTooltipData({
+                    x,
+                    y,
+                    data: [{
+                        title: `${object?.properties?.NAME}, ${object?.properties?.STATE_ABBREV}`,
+                        text: ''
+                    },{
+                        title: "Reported Lynchings",
+                        text: `${object?.properties?.LYNCHINGS}`
+                    },]
+                }) : setTooltipData({ x: null, y: null, data: null })
             }),],
         redlining: [
             new GeoJsonLayer({
@@ -112,19 +196,31 @@ export default function MapComponent({
                 extruded: false,
                 getFillColor: d => getColorCategorical({
                     ...bins.redlining,
-                    val: d.properties['holc_grade']||0
+                    val: d.properties['holc_grade'] || 0
                 }),
-                opacity:0.8
+                opacity: 0.8,
+                onHover: ({ object, x, y }) => !!object?.properties?.city ? setTooltipData({
+                    x,
+                    y,
+                    data: [{
+                        title: `${object?.properties?.name ? `${object?.properties?.name}, ` : ''}${object?.properties?.city ? `${object?.properties?.city}, ` : ''}${object?.properties?.state ? `${object?.properties?.state}, ` : ''}`.slice(0,-2),
+                        text: ''
+                    },{
+                        title: "HOLC Grade",
+                        text: `${object?.properties?.holc_grade} (${{A:'Best',B:'Still Desirable',C:'Declining',D:'Hazardous'}[object?.properties?.holc_grade]})`
+                    },]
+                }) : setTooltipData({ x: null, y: null, data: null })
             }),
         ],
     };
-    
+
     return <div className={styles.mapContainer}>
         <DeckGL
             viewState={view}
             onViewStateChange={({ viewState }) => setView(viewState)}
             controller={true}
             layers={activeLayers.map((name) => layers[name]).flat()}
+            pickingRadius={30}
         >
             <MapboxGLMap
                 reuseMaps
@@ -133,5 +229,9 @@ export default function MapComponent({
                 mapboxAccessToken={process.env.NEXT_PUBLIC_MAPBOX_TOKEN}
             />
         </DeckGL>
+        {!!tooltipData.data && tooltipData.x !== -1 && <div className={styles.tooltip} style={{ left: tooltipData.x + 5, top: tooltipData.y + 5 }}>
+            {tooltipData.data.map(entry => <p key={entry.title}>
+                <b>{entry.title}</b> {entry.text}</p>)}
+        </div>}
     </div>
 }

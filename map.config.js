@@ -32,7 +32,7 @@ export const bins = {
             [253, 141, 60],
             [227, 26, 28],
             [117, 112, 179],
-            [231, 41, 138]
+            [36,81,211]
         ],
         labels: [
             "Don't Know",
@@ -46,7 +46,7 @@ export const bins = {
     },
     violence: {
         bins: ['x'],
-        colors: [[255, 0, 0]],
+        colors: [[0, 0, 0]],
         labels: ["Incidence of Mass Violence"],
         categorical: true
     },

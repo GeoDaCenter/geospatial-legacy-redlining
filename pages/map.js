@@ -8,6 +8,7 @@ import { Item } from '@adobe/react-spectrum';
 import { WebMercatorViewport } from '@deck.gl/core';
 import { fitBounds } from "@math.gl/web-mercator";
 import Legend from '../components/Legend';
+import Icon from '../components/Icon';
 import {
   LayerList,
   DATA_URL,
@@ -21,6 +22,7 @@ export default function Home() {
   const [activeLayers, setLayers] = useState(query.l ? query.l.split('|') : ['slavery'])
   const [hasPanned, setHasPanned] = useState(false)
   const [availableLayers, setAvailableLayers] = useState(LayerList)
+  const [portal, setPortal] = useState(null)
   const [view, setView] = useState({
     latitude: 0,
     longitude: 0,
@@ -110,7 +112,7 @@ export default function Home() {
         </ListBox>
       </section>
       <section className={styles.map}>
-        <MapComponent {...{ activeLayers, view, setView, bins, DATA_URL }} />
+        <MapComponent {...{ activeLayers, view, setView, bins, DATA_URL, setPortal }} />
       </section>
       <section className={styles.bottomRight}>
         <div className={styles.legend}>
@@ -121,6 +123,11 @@ export default function Home() {
           Map Data: © <a href="https://www.mapbox.com/about/maps/" target="_blank" rel="noreferrer">Mapbox</a> © <a href="https://www.openstreetmap.org/about/" target="_blank" rel="noreferrer">OpenStreetMap</a> <a href="https://www.mapbox.com/contribute/#/?q=&l=2.1234%2F32.9547%2F11" target="_blank" rel="noreferrer">Improve this map</a>
         </div>
       </section>
+      {!!portal && <section className={styles.portal}>
+        <a href={portal} target="_blank" rel="noreferrer"><Icon iconName="flag"/> Some remote pages may not work in this panel, click here to open in a new tab.</a>
+        <button className={styles.closePortal} onClick={() => setPortal(null)}>Close this panel</button>
+        <iframe width="100%" height="100%" src={portal} frameBorder="0" allowFullScreen={false} />
+      </section>}
     </div>
   )
 }

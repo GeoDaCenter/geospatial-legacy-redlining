@@ -5,18 +5,13 @@
   width:100vw;
   height:100vh;
 }
-.header, .sidebar, .attributions, .legend {  
+.header, .sidebar, .attributions, .legend, .tooltip, .portal {  
     background-color: rgba(255,255,255,0.7);
     z-index:2;
     padding: .5rem 1rem .5rem .5rem;
     box-shadow: 0 8px 32px 0 rgba( 0, 0, 0, 0.37 );
     backdrop-filter: blur( 11px );
     -webkit-backdrop-filter: blur( 11px );
-}
-@media (prefers-color-scheme: dark) {
-    .header, .sidebar, .attributions, .legend {  
-        background-color: rgba(0,0,0,0.7);
-    }
 }
 
 .header {
@@ -76,4 +71,51 @@
 .legend {
     display: flex;
     margin-bottom:1em;
+}
+.tooltip {
+    position:fixed;
+    max-width:50ch;
+}
+
+.tooltip p {
+    margin:0;
+    max-width:50ch;
+}
+
+.portal { 
+    width:100%;
+    position: absolute;
+    bottom:0;
+    left:0;
+    height:50vh;
+}
+
+.closePortal {
+    float:right;
+    cursor: pointer;
+}
+.portal a {
+    margin-bottom:1em;
+    color:rgb(18, 154, 195);
+    font-size:1.25rem;
+}
+
+.portal iframe {
+    margin-top:1em;
+}
+.portal svg {
+    width:1.25rem;
+    transform:translateY(2px);
+}
+.portal svg g {
+    fill:orange;
+}
+@media (prefers-color-scheme: dark) {
+    .header, .sidebar, .attributions, .legend, .tooltip, .portal {  
+        background-color: rgba(0,0,0,0.7);
+    }
+    .portal a {
+        margin-bottom:1em;
+        color:rgb(116, 248, 209);
+    }
 }
