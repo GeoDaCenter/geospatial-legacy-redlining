@@ -63,8 +63,11 @@
     bottom:0;
     right:0;
     z-index:2;
-    font-size:.65rem;
     max-width:70ch;
+}
+.attributions {
+    
+    font-size:.65rem;
 }
 .attributions span {
     margin-left:1em;
