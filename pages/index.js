@@ -20,7 +20,7 @@ export default function Home() {
           >
             <h2>Map</h2>
             <p>
-              See how the painful histories of slavery, sundown towns, and other racist practices impact communities&apos; ability to thrive today.
+              Histories of slavery, sundown towns, and other racist practices.
             </p>
           </a>
           </Link>
