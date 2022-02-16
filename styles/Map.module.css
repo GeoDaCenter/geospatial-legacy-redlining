@@ -6,12 +6,17 @@
   height:100vh;
 }
 .header, .sidebar, .attributions, .legend {  
-    background-color: rgba(0,0,0,0.7);
+    background-color: rgba(255,255,255,0.7);
     z-index:2;
     padding: .5rem 1rem .5rem .5rem;
     box-shadow: 0 8px 32px 0 rgba( 0, 0, 0, 0.37 );
     backdrop-filter: blur( 11px );
     -webkit-backdrop-filter: blur( 11px );
+}
+@media (prefers-color-scheme: dark) {
+    .header, .sidebar, .attributions, .legend {  
+        background-color: rgba(0,0,0,0.7);
+    }
 }
 
 .header {
@@ -44,7 +49,6 @@
     position:absolute;
     width:100vw;
     height:100vh;
-    background:tan;
     left:0;
     top:0;
     z-index:1;
