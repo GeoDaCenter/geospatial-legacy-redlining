@@ -82,7 +82,7 @@
     max-width:50ch;
 }
 
-.portal { 
+.portal, .jsonPortal { 
     width:100%;
     position: absolute;
     bottom:0;
@@ -110,6 +110,17 @@
 .portal svg g {
     fill:orange;
 }
+
+.jsonPortal {
+    width:50vh;
+    height:50vh;
+    left:initial;
+    right:0;
+    z-index: 5;
+    top:0;
+    bottom:initial;
+}
+
 @media (prefers-color-scheme: dark) {
     .header, .sidebar, .attributions, .legend, .tooltip, .portal {  
         background-color: rgba(0,0,0,0.7);
