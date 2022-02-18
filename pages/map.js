@@ -15,6 +15,8 @@ import {
   bins,
   attributions,
 } from '../map.config'
+import JSONInput from 'react-json-editor-ajrm';
+import locale    from 'react-json-editor-ajrm/locale/en';
 
 export default function Home() {
   const router = useRouter()
@@ -23,6 +25,13 @@ export default function Home() {
   const [hasPanned, setHasPanned] = useState(false)
   const [availableLayers, setAvailableLayers] = useState(LayerList)
   const [portal, setPortal] = useState(null)
+  const [currBins, setCurrBins] = useState(bins)
+  const [tempBins, setTempBins] = useState(bins)
+  const [changeBins, setChangeBins] = useState(false)
+  useEffect(() => {
+    setTempBins(currBins)
+  },[JSON.stringify(currBins)])
+
   const [view, setView] = useState({
     latitude: 0,
     longitude: 0,
@@ -84,7 +93,7 @@ export default function Home() {
       },
     }) // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [JSON.stringify(activeLayers), JSON.stringify(view)])
-
+  
   return (
     <div className={styles.container}>
       <Head>
@@ -110,13 +119,14 @@ export default function Home() {
         >
           {(item) => <Item>{item.label}</Item>}
         </ListBox>
+        <button onClick={() => setChangeBins(prev => !prev)}>Change Bins</button>
       </section>
       <section className={styles.map}>
-        <MapComponent {...{ activeLayers, view, setView, bins, DATA_URL, setPortal }} />
+        <MapComponent {...{ activeLayers, view, setView, bins: currBins, DATA_URL, setPortal }} />
       </section>
       <section className={styles.bottomRight}>
         <div className={styles.legend}>
-          {activeLayers.map(layer => <Legend key={`Legend-${layer}`} {...{ ...bins[layer], title: LayerList.find(f => f.id === layer)?.label }} />)}
+          {activeLayers.map(layer => <Legend key={`Legend-${layer}`} {...{ ...currBins[layer], title: LayerList.find(f => f.id === layer)?.label }} />)}
         </div>
         <div className={styles.attributions}>
           {activeLayers.map(layer => <span key={`attribution-${layer}`}>{attributions[layer] || ''}<br /></span>)}
@@ -128,6 +138,17 @@ export default function Home() {
         <button className={styles.closePortal} onClick={() => setPortal(null)}>Close this panel</button>
         <iframe width="100%" height="100%" src={portal} frameBorder="0" allowFullScreen={false} />
       </section>}
+      {!!changeBins && <section className={styles.jsonPortal}>
+          <JSONInput
+            id          = 'jsonEditr'
+            placeholder = { tempBins }
+            onChange = { ({jsObject}) => setTempBins(jsObject)}
+            width = '100%'
+            height = '100%'
+        />
+        <button onClick={() => setCurrBins(tempBins)}>commit changes</button>
+        <button onClick={() => setChangeBins(false)}>close</button>
+        </section>}
     </div>
   )
 }

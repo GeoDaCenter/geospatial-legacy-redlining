@@ -1,6 +1,6 @@
 import { useState } from "react";
 import DeckGL from "@deck.gl/react";
-import { GeoJsonLayer, ScatterplotLayer } from "@deck.gl/layers";
+import { GeoJsonLayer, ScatterplotLayer, IconLayer } from "@deck.gl/layers";
 import MapboxGLMap from "react-map-gl";
 import styles from '../styles/Map.module.css'
 
@@ -21,6 +21,14 @@ const getColorCategorical = ({
     return [240, 240, 240, 120]
 }
 
+
+const ICON_MAPPING = {
+    flag: {x: 0, y: 0, width: 100, height: 100, mask: true},
+    candle: {x: 100, y: 0, width: 100, height: 100, mask: true},
+    group: {x: 0, y: 100, width: 100, height: 100, mask: true},
+    grave: {x: 100, y: 100, width: 100, height: 100, mask: true},
+  };
+
 export default function MapComponent({
     activeLayers = ["slavery"],
     view,
@@ -34,6 +42,7 @@ export default function MapComponent({
         x: null,
         y: null
     })
+    const stringifiedBins = JSON.stringify(bins)
 
     const dotScale = view.zoom > 10 ? 250 : ((14 - view.zoom) ** 4) * 1.5
     const layers = {
@@ -49,7 +58,7 @@ export default function MapComponent({
                     ...bins.slavery,
                     val: d?.properties['Slave Population'] || 0
                 }),
-                getLineColor: [255, 255, 255],
+                getLineColor: [255, 255, 255, 40],
                 getLineWidth: 1,
                 lineWidthMinPixels: 1,
                 lineWidthMaxPixels: 1,
@@ -76,8 +85,11 @@ export default function MapComponent({
                         title: `Percent Free People of Color`,
                         text: `${Math.round((object?.properties['Percent Pop Free of Color'] || 0) * 100) / 100}%`
                     }]
-                }) : setTooltipData({ x: null, y: null, data: null })
-            }),
+                }) : setTooltipData({ x: null, y: null, data: null }),
+                updateTriggers: {
+                    getFillColor: [stringifiedBins]
+                }
+            })
         ],
         sundown: [
             new ScatterplotLayer({
@@ -116,23 +128,25 @@ export default function MapComponent({
                         title: 'Click for more info'
                     }]
                 }) : setTooltipData({ x: null, y: null, data: null }),
-                onClick: ({ object }) => setPortal(`https://justice.tougaloo.edu/sundowntown/${object?.properties?.name?.replace(/\s/g, '-').toLowerCase()}-${object?.properties?.state.replace(/\s/g, '-').toLowerCase()}/`)
+                onClick: ({ object }) => setPortal(`https://justice.tougaloo.edu/sundowntown/${object?.properties?.name?.replace(/\s/g, '-').toLowerCase()}-${object?.properties?.state.replace(/\s/g, '-').toLowerCase()}/`),
+                updateTriggers: {
+                    getFillColor: [stringifiedBins]
+                }
             })
         ],
         violence: [
-            new ScatterplotLayer({
-                id: 'mass-violence-layer',
+            new IconLayer({
+                iconAtlas: 'icons/icon-atlas.png',
+                iconMapping: ICON_MAPPING,
+                getIcon: d => 'flag',       
+                pickable:true,
+                id: 'icon-mass-violence-layer',
                 data: DATA_URL.violence,
                 getPosition: d => d?.geometry?.coordinates,
-                getRadius: dotScale,
-                getFillColor: [0, 0, 0],
-                getLineColor: d => [0, 0, 0],
-                pickable: true,
-                stroked: true,
-                filled: true,
-                lineWidthScale: 20,
-                lineWidthMinPixels: 1,
-                lineWidthMaxPixels: 1,
+                getSize: dotScale,
+                sizeScale: 3,
+                sizeUnits: 'meters',
+                getColor: [0, 0, 0],
                 onHover: ({ object, x, y }) => !!object?.properties?.name ? setTooltipData({
                     x,
                     y,
@@ -153,16 +167,55 @@ export default function MapComponent({
                         text: ''
                     }]
                 }) : setTooltipData({ x: null, y: null, data: null }),
-                onClick: ({ object }) => setPortal(object?.properties?.Source)
+                onClick: ({ object }) => setPortal(object?.properties?.Source),
+                updateTriggers: {
+                    getColor: [stringifiedBins]
+                }
 
-            })
+            }),
+            // new ScatterplotLayer({
+            //     id: 'mass-violence-layer',
+            //     data: DATA_URL.violence,
+            //     getPosition: d => d?.geometry?.coordinates,
+            //     getRadius: dotScale,
+            //     getFillColor: [0, 0, 0],
+            //     getLineColor: d => [0, 0, 0],
+            //     pickable: true,
+            //     stroked: true,
+            //     filled: true,
+            //     lineWidthScale: 20,
+            //     lineWidthMinPixels: 1,
+            //     lineWidthMaxPixels: 1,
+            //     onHover: ({ object, x, y }) => !!object?.properties?.name ? setTooltipData({
+            //         x,
+            //         y,
+            //         data: [{
+            //             title: object?.properties?.name,
+            //             text: object?.properties?.Date
+            //         }, {
+            //             title: 'Fatalities',
+            //             text: object?.properties?.Fatalities                        
+            //         }, {
+            //             title: 'Refugees',
+            //             text: object?.properties?.Regugees                        
+            //         }, {
+            //             title: '',
+            //             text: object?.properties?.['Narrative/Notes']
+            //         },{
+            //             title: 'Click for more info',
+            //             text: ''
+            //         }]
+            //     }) : setTooltipData({ x: null, y: null, data: null }),
+            //     onClick: ({ object }) => setPortal(object?.properties?.Source)
+
+            // })
         ],
         lynchings: [
             new GeoJsonLayer({
                 id: "lynchings-layer",
                 data: DATA_URL.lynchings,
                 pickable: true,
-                stroked: true,
+                stroked: false,
                 filled: true,
                 extruded: false,
                 getFillColor: d => getColor({
@@ -184,7 +237,10 @@ export default function MapComponent({
                         title: "Reported Lynchings",
                         text: `${object?.properties?.LYNCHINGS}`
                     },]
-                }) : setTooltipData({ x: null, y: null, data: null })
+                }) : setTooltipData({ x: null, y: null, data: null }),
+                updateTriggers: {
+                    getFillColor: [stringifiedBins]
+                }
             }),],
         redlining: [
             new GeoJsonLayer({
@@ -209,7 +265,10 @@ export default function MapComponent({
                         title: "HOLC Grade",
                         text: `${object?.properties?.holc_grade} (${{A:'Best',B:'Still Desirable',C:'Declining',D:'Hazardous'}[object?.properties?.holc_grade]})`
                     },]
-                }) : setTooltipData({ x: null, y: null, data: null })
+                }) : setTooltipData({ x: null, y: null, data: null }),
+                updateTriggers: {
+                    getFillColor: [stringifiedBins]
+                }
             }),
         ],
     };
