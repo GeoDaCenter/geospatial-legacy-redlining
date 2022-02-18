@@ -3,8 +3,8 @@ import { useRouter } from 'next/router'
 import styles from '../styles/Map.module.css'
 import MapComponent from '../components/MapComponent'
 import { useEffect, useState } from 'react';
-import { ListBox } from '@adobe/react-spectrum';
-import { Item } from '@adobe/react-spectrum';
+import { Button, ListBox, Item } from '@adobe/react-spectrum';
+import Settings from '@spectrum-icons/workflow/Settings';
 import { WebMercatorViewport } from '@deck.gl/core';
 import { fitBounds } from "@math.gl/web-mercator";
 import Legend from '../components/Legend';
@@ -119,7 +119,7 @@ export default function Home() {
         >
           {(item) => <Item>{item.label}</Item>}
         </ListBox>
-        <button onClick={() => setChangeBins(prev => !prev)}>Change Bins</button>
+        <Button onClick={() => setChangeBins(prev => !prev)} isQuiet><Settings aria-label="Settings" /> Settings</Button>
       </section>
       <section className={styles.map}>
         <MapComponent {...{ activeLayers, view, setView, bins: currBins, DATA_URL, setPortal }} />
@@ -146,8 +146,8 @@ export default function Home() {
             width = '100%'
             height = '100%'
         />
-        <button onClick={() => setCurrBins(tempBins)}>commit changes</button>
-        <button onClick={() => setChangeBins(false)}>close</button>
+        <Button onClick={() => setCurrBins(tempBins)}>commit changes</Button>
+        <Button onClick={() => setChangeBins(false)}>close</Button>
         </section>}
     </div>
   )
