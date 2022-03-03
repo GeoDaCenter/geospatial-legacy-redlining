@@ -3,7 +3,7 @@ import { useRouter } from 'next/router'
 import styles from '../styles/Map.module.css'
 import MapComponent from '../components/MapComponent'
 import { useEffect, useState } from 'react';
-import { Button, ListBox, Item } from '@adobe/react-spectrum';
+import { Button, ListBox, Item, Flex, Checkbox } from '@adobe/react-spectrum';
 import Settings from '@spectrum-icons/workflow/Settings';
 import { WebMercatorViewport } from '@deck.gl/core';
 import { fitBounds } from "@math.gl/web-mercator";
@@ -16,7 +16,7 @@ import {
   attributions,
 } from '../map.config'
 import JSONInput from 'react-json-editor-ajrm';
-import locale    from 'react-json-editor-ajrm/locale/en';
+import locale from 'react-json-editor-ajrm/locale/en';
 
 export default function Home() {
   const router = useRouter()
@@ -30,7 +30,7 @@ export default function Home() {
   const [changeBins, setChangeBins] = useState(false)
   useEffect(() => {
     setTempBins(currBins)
-  },[JSON.stringify(currBins)])
+  }, [JSON.stringify(currBins)])
 
   const [view, setView] = useState({
     latitude: 0,
@@ -45,10 +45,10 @@ export default function Home() {
       const viewport = fitBounds({
         width: window.innerWidth,
         height: window.innerHeight,
-        bounds: [[-125.109215,25.043926],[-66.925621,49.295128]],
-        padding:50
+        bounds: [[-125.109215, 25.043926], [-66.925621, 49.295128]],
+        padding: 50
       });
-      
+
       setView({ ...viewport, pitch: 0, bearing: 0 });
     } // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -62,7 +62,7 @@ export default function Home() {
         +query.x1, +query.y1
       ],
     ] : [
-      [-125.109215,25.043926],[-66.925621,49.295128]
+      [-125.109215, 25.043926], [-66.925621, 49.295128]
     ]
     if (typeof window !== undefined && !hasPanned) {
       const viewport = fitBounds({
@@ -93,7 +93,15 @@ export default function Home() {
       },
     }) // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [JSON.stringify(activeLayers), JSON.stringify(view)])
-  
+
+  const handleSelection = (layer) => {
+    if (activeLayers.includes(layer)) {
+      setLayers(activeLayers.filter(l => l !== layer))
+    } else {
+      setLayers([...activeLayers, layer])
+    }
+  }
+
   return (
     <div className={styles.container}>
       <Head>
@@ -109,16 +117,22 @@ export default function Home() {
       </header>
       <section className={styles.sidebar}>
         <h3>Map Layers</h3>
-        <ListBox
+        <Flex direction="column">
+          {LayerList.map(layer => <Checkbox isSelected={activeLayers.includes(layer.id)} onChange={() => handleSelection(layer.id)}>
+            {layer.label}
+          </Checkbox>
+          )}
+        </Flex>
+        {/* <ListBox
           selectionMode="multiple"
           aria-label="Choose map layers"
           width="size-2400"
-          items={availableLayers}
-          defaultSelectedKeys={activeLayers}
+          items={LayerList}
+          // defaultSelectedKeys={activeLayers}
           onSelectionChange={selected => setLayers(Array.from(selected))}
         >
           {(item) => <Item>{item.label}</Item>}
-        </ListBox>
+        </ListBox> */}
         <Button onClick={() => setChangeBins(prev => !prev)} isQuiet><Settings aria-label="Settings" /> Settings</Button>
       </section>
       <section className={styles.map}>
@@ -134,21 +148,21 @@ export default function Home() {
         </div>
       </section>
       {!!portal && <section className={styles.portal}>
-        <a href={portal} target="_blank" rel="noreferrer"><Icon iconName="flag"/> Some remote pages may not work in this panel, click here to open in a new tab.</a>
+        <a href={portal} target="_blank" rel="noreferrer"><Icon iconName="flag" /> Some remote pages may not work in this panel, click here to open in a new tab.</a>
         <button className={styles.closePortal} onClick={() => setPortal(null)}>Close this panel</button>
         <iframe width="100%" height="100%" src={portal} frameBorder="0" allowFullScreen={false} />
       </section>}
       {!!changeBins && <section className={styles.jsonPortal}>
-          <JSONInput
-            id          = 'jsonEditr'
-            placeholder = { tempBins }
-            onChange = { ({jsObject}) => setTempBins(jsObject)}
-            width = '100%'
-            height = '100%'
+        <JSONInput
+          id='jsonEditr'
+          placeholder={tempBins}
+          onChange={({ jsObject }) => setTempBins(jsObject)}
+          width='100%'
+          height='100%'
         />
         <Button onClick={() => setCurrBins(tempBins)}>commit changes</Button>
         <Button onClick={() => setChangeBins(false)}>close</Button>
-        </section>}
+      </section>}
     </div>
   )
 }
