@@ -18,10 +18,12 @@ export const DATA_URL = {
 export const bins = {
     slavery: {
         bins: [300, 1600, 4500, 37290],
-        colors: [[255,255,204],
-        [161,218,180],
-        [65,182,196],
-        [34,94,168]],
+        colors: [
+        [217, 217, 217],
+        [173, 194, 191],
+        [119, 156, 175],
+        [27,65,87]],
+
         separateZero: true
     },
     sundown: {
