@@ -12,7 +12,7 @@ import Icon from '../components/Icon';
 import {
   LayerList,
   DATA_URL,
-  bins,
+  LayerSettings,
   attributions,
 } from '../map.config'
 import JSONInput from 'react-json-editor-ajrm';
@@ -25,8 +25,8 @@ export default function Home() {
   const [hasPanned, setHasPanned] = useState(false)
   const [availableLayers, setAvailableLayers] = useState(LayerList)
   const [portal, setPortal] = useState(null)
-  const [currBins, setCurrBins] = useState(bins)
-  const [tempBins, setTempBins] = useState(bins)
+  const [currLayerSettings, setCurrLayerSettings] = useState(LayerSettings)
+  const [tempLayerSettings, setTempLayerSettings] = useState(LayerSettings)
   const [changeBins, setChangeBins] = useState(false)
   useEffect(() => {
     setTempBins(currBins)

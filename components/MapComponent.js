@@ -3,6 +3,7 @@ import DeckGL from "@deck.gl/react";
 import { GeoJsonLayer, ScatterplotLayer, IconLayer } from "@deck.gl/layers";
 import MapboxGLMap from "react-map-gl";
 import styles from '../styles/Map.module.css'
+import { LayerSettings } from "../map.config";
 
 const getColor = ({
     val, bins, colors, separateZero }) => {
@@ -48,44 +49,10 @@ export default function MapComponent({
     const layers = {
         slavery: [
             new GeoJsonLayer({
-                id: "slavery-layer",
-                data: DATA_URL.slavery,
-                pickable: true,
-                stroked: true,
-                filled: true,
-                extruded: false,
-                getFillColor: d => getColor({
-                    ...bins.slavery,
-                    val: d?.properties['Slave Population'] || 0
-                }),
-                getLineColor: [255, 255, 255, 40],
-                getLineWidth: 1,
-                lineWidthMinPixels: 1,
-                lineWidthMaxPixels: 1,
-                opacity: 0.7,
-                onHover: ({ object, x, y }) => !!object?.properties?.NHGISNAM ? setTooltipData({
-                    x,
-                    y,
-                    data: [{
-                        title: `${object?.properties?.NHGISNAM}, ${object?.properties?.STATENAM || 'Undesignated'}`,
-                        text: ''
-                    }, {
-                        title: `Total Population`,
-                        text: Math.round((object?.properties['Total Population'] || 0) * 100) / 100
-                    }, {
-                        title: `Slave Population`,
-                        text: Math.round((object?.properties['Slave Population'] || 0) * 100) / 100
-                    }, {
-                        title: `Percent Slave Population`,
-                        text: `${Math.round((object?.properties['Percent Pop Slave '] || 0) * 100) / 100}%`
-                    }, {
-                        title: `Free People of Color`,
-                        text: Math.round((object?.properties['Free Colored Population'] || 0) * 100) / 100
-                    }, {
-                        title: `Percent Free People of Color`,
-                        text: `${Math.round((object?.properties['Percent Pop Free of Color'] || 0) * 100) / 100}%`
-                    }]
-                }) : setTooltipData({ x: null, y: null, data: null }),
+
+                onHover: ({ feature, x, y }) => tooltipValidateFunction(feature) 
+                    ? setTooltipData({x,y,tooltipDataFunction(feature)})
+                    : setTooltipData({ x: null, y: null, data: null }),
                 updateTriggers: {
                     getFillColor: [stringifiedBins]
                 }
@@ -93,41 +60,10 @@ export default function MapComponent({
         ],
         sundown: [
             new ScatterplotLayer({
-                id: 'sundown-layer',
-                data: DATA_URL.sundown,
-                getPosition: d => d.geometry.coordinates,
                 getRadius: dotScale,
-                getFillColor: d => getColorCategorical({
-                    ...bins.sundown,
-                    val: d?.properties['confirmed']
-                }),
-                getLineColor: d => [0, 0, 0],
-                pickable: true,
-                stroked: true,
-                filled: true,
-                lineWidthScale: 20,
-                lineWidthMinPixels: 1,
-                lineWidthMaxPixels: 1,
-                onHover: ({ object, x, y }) => !!object?.properties?.name ? setTooltipData({
-                    x,
-                    y,
-                    data: [{
-                        title: `${object?.properties?.name}, ${object?.properties?.state}`,
-                        text: ''
-                    }, {
-                        title: `Sundown Confirmation`,
-                        text: {
-                            1: "Don't Know",
-                            2: "Possible",
-                            3: "Probable",
-                            4: "Surely",
-                            5: "Unlikely / Always Biracial",
-                            6: "Black Town or Township"
-                        }[object?.properties['confirmed']]
-                    }, {
-                        title: 'Click for more info'
-                    }]
-                }) : setTooltipData({ x: null, y: null, data: null }),
+                onHover: ({ feature, x, y }) => tooltipValidateFunction(feature) 
+                    ? setTooltipData({x,y,tooltipDataFunction(feature)})
+                    : setTooltipData({ x: null, y: null, data: null }),
                 onClick: ({ object }) => setPortal(`https://justice.tougaloo.edu/sundowntown/${object?.properties?.name?.replace(/\s/g, '-').toLowerCase()}-${object?.properties?.state.replace(/\s/g, '-').toLowerCase()}/`),
                 updateTriggers: {
                     getFillColor: [stringifiedBins]
@@ -272,6 +208,10 @@ export default function MapComponent({
             }),
         ],
     };
+
+    // const testLayers = [
+    //     new LayerSettings['slavery'].Layer({})
+    // ]
 
     return <div className={styles.mapContainer}>
         <DeckGL
