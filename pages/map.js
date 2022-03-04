@@ -11,8 +11,8 @@ import Legend from '../components/Legend';
 import Icon from '../components/Icon';
 import {
   LayerList,
-  DATA_URL,
   bins,
+  layerSettings,
   attributions,
 } from '../map.config'
 import JSONInput from 'react-json-editor-ajrm';
@@ -27,6 +27,8 @@ export default function Home() {
   const [portal, setPortal] = useState(null)
   const [currBins, setCurrBins] = useState(bins)
   const [tempBins, setTempBins] = useState(bins)
+  const [currLayerSettings, setCurrLayerSettings] = useState(layerSettings)
+  const [tempLayerSettings, setTempLayerSettings] = useState(layerSettings)
   const [changeBins, setChangeBins] = useState(false)
   useEffect(() => {
     setTempBins(currBins)
@@ -136,7 +138,7 @@ export default function Home() {
         <Button onClick={() => setChangeBins(prev => !prev)} isQuiet><Settings aria-label="Settings" /> Settings</Button>
       </section>
       <section className={styles.map}>
-        <MapComponent {...{ activeLayers, view, setView, bins: currBins, DATA_URL, setPortal }} />
+        <MapComponent {...{ activeLayers, view, setView, bins: currBins, layerSettings: currLayerSettings, setPortal }} />
       </section>
       <section className={styles.bottomRight}>
         <div className={styles.legend}>
