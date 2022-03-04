@@ -30,8 +30,10 @@ export default function Home() {
   const [currLayerSettings, setCurrLayerSettings] = useState(layerSettings)
   const [tempLayerSettings, setTempLayerSettings] = useState(layerSettings)
   const [changeBins, setChangeBins] = useState(false)
+
   useEffect(() => {
     setTempBins(currBins)
+    // es-lint-disable-next-line react-hooks/exhaustive-deps
   }, [JSON.stringify(currBins)])
 
   const [view, setView] = useState({
@@ -120,7 +122,7 @@ export default function Home() {
       <section className={styles.sidebar}>
         <h3>Map Layers</h3>
         <Flex direction="column">
-          {LayerList.map(layer => <Checkbox isSelected={activeLayers.includes(layer.id)} onChange={() => handleSelection(layer.id)}>
+          {LayerList.map(layer => <Checkbox key={layer.id} isSelected={activeLayers.includes(layer.id)} onChange={() => handleSelection(layer.id)}>
             {layer.label}
           </Checkbox>
           )}
