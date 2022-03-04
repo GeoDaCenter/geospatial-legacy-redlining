@@ -36,8 +36,8 @@ export const bins = {
       [119, 156, 175],
       [27, 65, 87],
     ],
-
     separateZero: true,
+    zeroColor: [0,0,0,50]
   },
   sundown: {
     bins: [1, 2, 3, 4, 8, 9],
@@ -298,8 +298,8 @@ export const layerSettings = {
   },
 };
 
-function getColor({ val, bins, colors, separateZero }) {
-  if (separateZero && val === 0) return [50, 50, 50, 120];
+function getColor({ val, bins, colors, separateZero, zeroColor=[50,50,50,120] }) {
+  if (separateZero && val === 0) return zeroColor;
   for (let i = 0; i < bins.length; i++) {
     if (val <= bins[i]) return colors[i];
   }
