@@ -1,7 +1,7 @@
 import { GeoJsonLayer, ScatterplotLayer, IconLayer } from "@deck.gl/layers";
 
 export const LayerList = [
-  { label: "Enslaved Persons in the US - 1860", id: "slavery" },
+  { label: "Enslaved Persons in the US in 1860", id: "slavery" },
   { label: "Sundown Towns", id: "sundown" },
   { label: "Events of Mass Violence", id: "violence" },
   { label: "Reported Lynchings by County", id: "lynchings" },
@@ -10,6 +10,7 @@ export const LayerList = [
 
 export const DATA_URL = {
   slavery: "geojson/1860_counties.json",
+  slavery2: "geojson/1860_counties.json",
   sundown: "geojson/sundown_features.json",
   violence: "geojson/mass-violence-features.json",
   lynchings: "geojson/lynchings.geojson",
@@ -19,6 +20,8 @@ export const DATA_URL = {
 export const attributions = {
   slavery:
     "Enslaved Persons: US Decennial Census 1860, Accessed via Social Explorer. ",
+  slavery2:
+  "Enslaved Persons: US Decennial Census 1860, Accessed via Social Explorer. ",
   sundown:
     "Sundown Towns: James W. Loewen and heirs (Nick Loewen) - History and Social Justice, Tougaloo College, 2022. ",
   violence: "Events of Mass Violence: Liam Hogan and contributors, 2015. ",
@@ -29,25 +32,42 @@ export const attributions = {
 
 export const bins = {
   slavery: {
-    bins: [300, 1600, 4500, 37290],
+    bins: [500, 1000, 5000, 10000, 20000, 30000, 40000],
     colors: [
-      [217, 217, 217],
-      [173, 194, 191],
-      [119, 156, 175],
-      [27, 65, 87],
+      [194,175,140],
+      [191,158,76,220],
+      [174,118,86,225],
+      [143,112,64, 225],
+      [98,78,60,225],
+      [69,49,49,225],
+      [171,64,64,225],
     ],
     separateZero: true,
-    zeroColor: [0,0,0,50]
+    zeroColor: [0,0,0,0]
+  },
+  slavery2: {
+    bins: [0, 10, 25, 50, 60, 75, 100],
+    colors: [
+      [237,248,251,220],
+      [191,211,230,220],
+      [158,188,218,220],
+      [140,150,198,220],
+      [140,107,177,220],
+      [136,65,157,220],
+      [110,1,107,220],
+    ],
+    separateZero: true,
+    zeroColor: [0,0,0,0]
   },
   sundown: {
     bins: [1, 2, 3, 4, 8, 9],
     colors: [
-      [255, 255, 178],
-      [254, 204, 92],
-      [253, 141, 60],
-      [227, 26, 28],
-      [117, 112, 179],
-      [36, 81, 211],
+      [171,64,64,50],
+      [171,64,64,100],
+      [171,64,64,150],
+      [171,64,64,200],
+      [0,80,85,255],
+      [3,64,64,255],
     ],
     labels: [
       "Don't Know",
@@ -142,7 +162,7 @@ export const layerSettings = {
         }%`,
       },
     ],
-    getLineColor: [255, 255, 255, 40],
+    getLineColor: [115,115,115, 40],
     getLineWidth: 1,
     lineWidthMinPixels: 1,
     lineWidthMaxPixels: 1,
@@ -152,6 +172,70 @@ export const layerSettings = {
     filled: true,
     extruded: false,
   },
+
+slavery2: {
+    Layer: GeoJsonLayer,
+    data: DATA_URL.slavery,
+    id: "slavery-layer",
+    getFillColor: (feature) =>
+      getColor({
+        ...bins.slavery,
+        val: feature?.properties["Percent"] || 0,
+      }),
+    tooltipValidateFunction: (feature) => !!feature?.properties?.NHGISNAM,
+    tooltipDataFunction: (feature) => [
+      {
+        title: `${feature?.properties?.NHGISNAM}, ${
+          feature?.properties?.STATENAM || "Undesignated"
+        }`,
+        text: "",
+      },
+      {
+        title: `Total Population`,
+        text:
+          Math.round((feature?.properties["Total Population"] || 0) * 100) /
+          100,
+      },
+      {
+        title: `Slave Population`,
+        text:
+          Math.round((feature?.properties["Slave Population"] || 0) * 100) /
+          100,
+      },
+      {
+        title: `Percent Slave Population`,
+        text: `${
+          Math.round((feature?.properties["Percent Pop Slave "] || 0) * 100) /
+          100
+        }%`,
+      },
+      {
+        title: `Free People of Color`,
+        text:
+          Math.round(
+            (feature?.properties["Free Colored Population"] || 0) * 100
+          ) / 100,
+      },
+      {
+        title: `Percent Free People of Color`,
+        text: `${
+          Math.round(
+            (feature?.properties["Percent Pop Free of Color"] || 0) * 100
+          ) / 100
+        }%`,
+      },
+    ],
+    getLineColor: [115,115,115, 40],
+    getLineWidth: 1,
+    lineWidthMinPixels: 1,
+    lineWidthMaxPixels: 1,
+    opacity: 0.7,
+    pickable: true,
+    stroked: true,
+    filled: true,
+    extruded: false,
+  },
+
   sundown: {
     Layer: ScatterplotLayer,
     id: "sundown-layer",
@@ -162,7 +246,7 @@ export const layerSettings = {
         ...bins.sundown,
         val: d?.properties["confirmed"],
       }),
-    getLineColor: [0, 0, 0],
+    getLineColor: [0, 0, 0,0],
     pickable: true,
     stroked: true,
     filled: true,
@@ -298,7 +382,7 @@ export const layerSettings = {
   },
 };
 
-function getColor({ val, bins, colors, separateZero, zeroColor=[50,50,50,120] }) {
+function getColor({ val, bins, colors, separateZero, zeroColor=[255,2,255] }) {
   if (separateZero && val === 0) return zeroColor;
   for (let i = 0; i < bins.length; i++) {
     if (val <= bins[i]) return colors[i];
