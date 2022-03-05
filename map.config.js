@@ -99,13 +99,13 @@ export const bins = {
   lynchings: {
     bins: [1, 5, 10, 25, 50, 245],
     colors: [
-      [135, 135, 135],
-      [159, 108, 134],
-      [183, 81, 132],
-      [207, 55, 131],
-      [231, 28, 129],
-      [255, 1, 128],
-    ],
+      [193,181,166],
+      [194,175,140],
+      [150,150,150],
+      [99,99,99],
+      [37,37,37],
+      [56, 0, 0],
+    ], separateZero: true,
   },
 };
 
@@ -329,11 +329,15 @@ slavery2: {
         ...bins.lynchings,
         val: d?.properties["LYNCHINGS"] || 0,
       }),
-    getLineColor: [0, 0, 0],
-    getLineWidth: 1,
+    getLineColor: [115,115,115, 80],
+    getLineWidth: 2,
     lineWidthMinPixels: 1,
     lineWidthMaxPixels: 1,
     opacity: 0.7,
+    pickable: true,
+    stroked: true,
+    filled: true,
+    extruded: false,
     tooltipValidateFunction: (feature) => !!feature?.properties?.NAME,
     tooltipDataFunction: (feature) => [
       {
