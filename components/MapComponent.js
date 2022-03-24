@@ -28,6 +28,14 @@ export default function MapComponent({
             getRadius: dotScale,
             onClick: ({ object }) => setPortal(`https://justice.tougaloo.edu/sundowntown/${object?.properties?.full_nm?.replace(/\s/g, '-').replace(',','').toLowerCase()}/`)
         },
+        sundown2:{
+            getRadius: dotScale,
+            onClick: ({ object }) => setPortal(`https://justice.tougaloo.edu/sundowntown/${object?.properties?.full_nm?.replace(/\s/g, '-').replace(',','').toLowerCase()}/`)
+        },
+        sundownDot:{
+            getRadius: dotScale,
+            onClick: ({ object }) => setPortal(`https://justice.tougaloo.edu/sundowntown/${object?.properties?.full_nm?.replace(/\s/g, '-').replace(',','').toLowerCase()}/`)
+        },
         violence: {
             getSize: dotScale,
             onClick: ({ object }) => setPortal(object?.properties?.Source)      

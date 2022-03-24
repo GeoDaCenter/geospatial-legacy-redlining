@@ -3,6 +3,7 @@ import { FillStyleExtension } from "@deck.gl/extensions";
 
 export const LayerList = [
   { label: "Enslaved Persons in the US in 1860", id: "slavery" },
+  { label: "Sundown Towns (Centroid)", id: "sundownDot" },
   { label: "Sundown Towns", id: "sundown" },
   { label: "Sundown Towns Alt", id: "sundown2" },
   { label: "Events of Mass Violence", id: "violence" },
@@ -13,6 +14,7 @@ export const LayerList = [
 export const DATA_URL = {
   slavery: "geojson/1860_counties.json",
   slavery2: "geojson/1860_counties.json",
+  sundown_centroid: "geojson/sundown_features.json",
   sundown: "geojson/sundown_towns_areas_simplified.geojson",
   violence: "geojson/mass-violence-features.json",
   lynchings: "geojson/lynchings.geojson",
@@ -27,6 +29,8 @@ export const attributions = {
   sundown:
     "Sundown Towns: James W. Loewen and heirs (Nick Loewen) - History and Social Justice, Tougaloo College, 2022. ",
   sundown2:
+    "Sundown Towns: James W. Loewen and heirs (Nick Loewen) - History and Social Justice, Tougaloo College, 2022. ",
+  sundownDot:
     "Sundown Towns: James W. Loewen and heirs (Nick Loewen) - History and Social Justice, Tougaloo College, 2022. ",
   violence: "Events of Mass Violence: Liam Hogan and contributors, 2015. ",
   lynchings: "Lynchings: Lynching in America - EJI. ",
@@ -90,6 +94,26 @@ export const bins = {
       [171,64,64],
       [171,64,64],
       [171,64,64],
+      [0,80,85,255],
+      [3,64,64,255],
+    ],
+    labels: [
+      "Don't Know",
+      "Possible",
+      "Probable",
+      "Surely",
+      "Unlikely / Always Biracial",
+      "Black Town or Township",
+    ],
+    categorical: true,
+  },
+  sundownDot: {
+    bins: [1, 2, 3, 4, 8, 9],
+    colors: [
+      [171,64,64,50],
+      [171,64,64,100],
+      [171,64,64,150],
+      [171,64,64,200],
       [0,80,85,255],
       [3,64,64,255],
     ],
@@ -297,7 +321,7 @@ slavery2: {
   },
   sundown2: {
     Layer: GeoJsonLayer,
-    id: "sundown-layer",
+    id: "sundown-layer-2",
     data: DATA_URL.sundown,
     getFillColor: (d) =>
       getColorCategorical({
@@ -342,7 +366,45 @@ slavery2: {
       },
     ],
   },
-
+  sundownDot: {
+    Layer: ScatterplotLayer,
+    id: "sundown-layer-dot",
+    data: DATA_URL.sundown_centroid,
+    getPosition: (d) => d.geometry.coordinates,
+    getFillColor: (d) =>
+      getColorCategorical({
+        ...bins.sundownDot,
+        val: d?.properties["confirmed"],
+      }),
+    getLineColor: [0, 0, 0,0],
+    pickable: true,
+    stroked: true,
+    filled: true,
+    lineWidthScale: 20,
+    lineWidthMinPixels: 1,
+    lineWidthMaxPixels: 1,
+    tooltipValidateFunction: (feature) => feature?.properties?.name,
+    tooltipDataFunction: (feature) => [
+      {
+        title: `${feature?.properties?.name}, ${feature?.properties?.state}`,
+        text: "",
+      },
+      {
+        title: `Sundown Confirmation`,
+        text: {
+          1: "Don't Know",
+          2: "Possible",
+          3: "Probable",
+          4: "Surely",
+          5: "Unlikely / Always Biracial",
+          6: "Black Town or Township",
+        }[feature?.properties["confirmed"]],
+      },
+      {
+        title: "Click for more info",
+      },
+    ],
+  },
   violence: {
     Layer: IconLayer,
     iconAtlas: "icons/icon-atlas.png",
