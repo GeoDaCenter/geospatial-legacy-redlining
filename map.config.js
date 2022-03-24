@@ -1,8 +1,10 @@
 import { GeoJsonLayer, ScatterplotLayer, IconLayer } from "@deck.gl/layers";
+import { FillStyleExtension } from "@deck.gl/extensions";
 
 export const LayerList = [
   { label: "Enslaved Persons in the US in 1860", id: "slavery" },
   { label: "Sundown Towns", id: "sundown" },
+  { label: "Sundown Towns Alt", id: "sundown2" },
   { label: "Events of Mass Violence", id: "violence" },
   { label: "Reported Lynchings by County", id: "lynchings" },
   { label: "Redlining", id: "redlining" },
@@ -23,6 +25,8 @@ export const attributions = {
   slavery2:
   "Enslaved Persons: US Decennial Census 1860, Accessed via Social Explorer. ",
   sundown:
+    "Sundown Towns: James W. Loewen and heirs (Nick Loewen) - History and Social Justice, Tougaloo College, 2022. ",
+  sundown2:
     "Sundown Towns: James W. Loewen and heirs (Nick Loewen) - History and Social Justice, Tougaloo College, 2022. ",
   violence: "Events of Mass Violence: Liam Hogan and contributors, 2015. ",
   lynchings: "Lynchings: Lynching in America - EJI. ",
@@ -66,6 +70,26 @@ export const bins = {
       [171,64,64,100],
       [171,64,64,150],
       [171,64,64,200],
+      [0,80,85,255],
+      [3,64,64,255],
+    ],
+    labels: [
+      "Don't Know",
+      "Possible",
+      "Probable",
+      "Surely",
+      "Unlikely / Always Biracial",
+      "Black Town or Township",
+    ],
+    categorical: true,
+  },
+  sundown2: {
+    bins: ["1", "2", "3", "4", "8", "9"],
+    colors: [
+      [171,64,64],
+      [171,64,64],
+      [171,64,64],
+      [171,64,64],
       [0,80,85,255],
       [3,64,64,255],
     ],
@@ -235,7 +259,6 @@ slavery2: {
     filled: true,
     extruded: false,
   },
-
   sundown: {
     Layer: GeoJsonLayer,
     id: "sundown-layer",
@@ -243,7 +266,7 @@ slavery2: {
     getFillColor: (d) =>
       getColorCategorical({
         ...bins.sundown,
-        val: d?.properties["type"],
+        val: d?.properties["confrmd"],
       }),
     getLineColor: [0, 0, 0,0],
     pickable: true,
@@ -259,19 +282,67 @@ slavery2: {
       {
         title: `Sundown Confirmation`,
         text: {
-          1: "Don't Know",
-          2: "Possible",
-          3: "Probable",
-          4: "Surely",
-          5: "Unlikely / Always Biracial",
-          6: "Black Town or Township",
-        }[feature?.properties["type"]],
+          "1": "Don't Know",
+          "2": "Possible",
+          "3": "Probable",
+          "4": "Surely",
+          "8": "Unlikely / Always Biracial",
+          "9": "Black Town or Township",
+        }[feature?.properties["confrmd"]],
       },
       {
         title: "Click for more info",
       },
     ],
   },
+  sundown2: {
+    Layer: GeoJsonLayer,
+    id: "sundown-layer",
+    data: DATA_URL.sundown,
+    getFillColor: (d) =>
+      getColorCategorical({
+        ...bins.sundown,
+        val: d?.properties["confrmd"],
+      }),
+    getLineColor: [0, 0, 0, 120],
+    getLineWidth: 1,
+    lineWidthScale: 20,
+    lineWidthMinPixels: 1,
+    lineWidthMaxPixels: 1,
+    pickable: true,
+    stroked: true,
+    filled: true,
+    autoHighlight: true,
+    fillPatternAtlas: `/patterns/sundown-pattern.png`,
+    fillPatternEnabled: true,
+    fillPatternMapping: `/patterns/sundown-atlas.json`,
+    getFillPattern: f => f.properties["confrmd"],
+    getFillPatternScale: 20,
+    getFillPatternOffset: [0, 0],
+    extensions: [new FillStyleExtension({ pattern: true })],
+    tooltipValidateFunction: (feature) => feature?.properties?.full_nm,
+    tooltipDataFunction: (feature) => [
+      {
+        title: `${feature?.properties?.full_nm}`,
+        text: "",
+      },
+      {
+        title: `Sundown Confirmation`,
+        text: {
+          "1": "Don't Know",
+          "2": "Possible",
+          "3": "Probable",
+          "4": "Surely",
+          "8": "Unlikely / Always Biracial",
+          "9": "Black Town or Township",
+        }[feature?.properties["confrmd"]],
+      },
+      {
+        title: "Click for more info",
+      },
+    ],
+  },
+
   violence: {
     Layer: IconLayer,
     iconAtlas: "icons/icon-atlas.png",

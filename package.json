@@ -10,6 +10,7 @@
   "dependencies": {
     "@adobe/react-spectrum": "^3.15.1",
     "@deck.gl/core": "8.6.5",
+    "@deck.gl/extensions": "8.6.5",
     "@deck.gl/layers": "8.6.5",
     "@deck.gl/mapbox": "8.6.5",
     "@deck.gl/react": "8.6.5",
