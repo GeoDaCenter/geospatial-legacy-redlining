@@ -11,7 +11,7 @@ export const LayerList = [
 export const DATA_URL = {
   slavery: "geojson/1860_counties.json",
   slavery2: "geojson/1860_counties.json",
-  sundown: "geojson/sundown_features.json",
+  sundown: "geojson/sundown_towns_areas_simplified.geojson",
   violence: "geojson/mass-violence-features.json",
   lynchings: "geojson/lynchings.geojson",
   redlining: "geojson/HOLC.geojson",
@@ -60,7 +60,7 @@ export const bins = {
     zeroColor: [0,0,0,0]
   },
   sundown: {
-    bins: [1, 2, 3, 4, 8, 9],
+    bins: ["1", "2", "3", "4", "8", "9"],
     colors: [
       [171,64,64,50],
       [171,64,64,100],
@@ -237,26 +237,23 @@ slavery2: {
   },
 
   sundown: {
-    Layer: ScatterplotLayer,
+    Layer: GeoJsonLayer,
     id: "sundown-layer",
     data: DATA_URL.sundown,
-    getPosition: (d) => d.geometry.coordinates,
     getFillColor: (d) =>
       getColorCategorical({
         ...bins.sundown,
-        val: d?.properties["confirmed"],
+        val: d?.properties["type"],
       }),
     getLineColor: [0, 0, 0,0],
     pickable: true,
     stroked: true,
     filled: true,
-    lineWidthScale: 20,
-    lineWidthMinPixels: 1,
-    lineWidthMaxPixels: 1,
-    tooltipValidateFunction: (feature) => feature?.properties?.name,
+    autoHighlight: true,
+    tooltipValidateFunction: (feature) => feature?.properties?.full_nm,
     tooltipDataFunction: (feature) => [
       {
-        title: `${feature?.properties?.name}, ${feature?.properties?.state}`,
+        title: `${feature?.properties?.full_nm}`,
         text: "",
       },
       {
@@ -268,7 +265,7 @@ slavery2: {
           4: "Surely",
           5: "Unlikely / Always Biracial",
           6: "Black Town or Township",
-        }[feature?.properties["confirmed"]],
+        }[feature?.properties["type"]],
       },
       {
         title: "Click for more info",
