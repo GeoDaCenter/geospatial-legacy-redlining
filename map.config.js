@@ -68,7 +68,7 @@ export const bins = {
     zeroColor: [0,0,0,0]
   },
   sundown: {
-    bins: ["1", "2", "3", "4", "8", "9"],
+    bins: [1, 2, 3, 4, 8, 9],
     colors: [
       [171,64,64,50],
       [171,64,64,100],
@@ -88,7 +88,7 @@ export const bins = {
     categorical: true,
   },
   sundown2: {
-    bins: ["1", "2", "3", "4", "8", "9"],
+    bins: [1, 2, 3, 4, 8, 9],
     colors: [
       [171,64,64],
       [171,64,64],
@@ -290,29 +290,30 @@ slavery2: {
     getFillColor: (d) =>
       getColorCategorical({
         ...bins.sundown,
-        val: d?.properties["confrmd"],
+        val: d?.properties["confirmed"],
       }),
     getLineColor: [0, 0, 0,0],
     pickable: true,
     stroked: true,
     filled: true,
     autoHighlight: true,
-    tooltipValidateFunction: (feature) => feature?.properties?.full_nm,
+    tooltipValidateFunction: (feature) => feature?.properties?.full_name,
     tooltipDataFunction: (feature) => [
       {
-        title: `${feature?.properties?.full_nm}`,
+        title: `${feature?.properties?.full_name}`,
         text: "",
       },
       {
         title: `Sundown Confirmation`,
         text: {
-          "1": "Don't Know",
-          "2": "Possible",
-          "3": "Probable",
-          "4": "Surely",
-          "8": "Unlikely / Always Biracial",
-          "9": "Black Town or Township",
-        }[feature?.properties["confrmd"]],
+          1: "Don't Know",
+          2: "Possible",
+          3: "Probable",
+          4: "Surely",
+          8: "Unlikely / Always Biracial",
+          9: "Black Town or Township",
+          0: "Unknown / No Data"
+        }[feature?.properties["confirmed"]],
       },
       {
         title: "Click for more info",
@@ -326,9 +327,9 @@ slavery2: {
     getFillColor: (d) =>
       getColorCategorical({
         ...bins.sundown,
-        val: d?.properties["confrmd"],
+        val: d?.properties["confirmed"],
       }),
-    getLineColor: [0, 0, 0, 120],
+    getLineColor: [0, 0, 0, 80],
     getLineWidth: 1,
     lineWidthScale: 20,
     lineWidthMinPixels: 1,
@@ -340,26 +341,27 @@ slavery2: {
     fillPatternAtlas: `/patterns/sundown-pattern.png`,
     fillPatternEnabled: true,
     fillPatternMapping: `/patterns/sundown-atlas.json`,
-    getFillPattern: f => f.properties["confrmd"],
+    getFillPattern: f => f.properties["confirmed"],
     getFillPatternScale: 20,
     getFillPatternOffset: [0, 0],
     extensions: [new FillStyleExtension({ pattern: true })],
-    tooltipValidateFunction: (feature) => feature?.properties?.full_nm,
+    tooltipValidateFunction: (feature) => feature?.properties?.full_name,
     tooltipDataFunction: (feature) => [
       {
-        title: `${feature?.properties?.full_nm}`,
+        title: `${feature?.properties?.full_name}`,
         text: "",
       },
       {
         title: `Sundown Confirmation`,
         text: {
-          "1": "Don't Know",
-          "2": "Possible",
-          "3": "Probable",
-          "4": "Surely",
-          "8": "Unlikely / Always Biracial",
-          "9": "Black Town or Township",
-        }[feature?.properties["confrmd"]],
+          1: "Don't Know",
+          2: "Possible",
+          3: "Probable",
+          4: "Surely",
+          8: "Unlikely / Always Biracial",
+          9: "Black Town or Township",
+          0: "Unknown / No Data"
+        }[feature?.properties["confirmed"]],
       },
       {
         title: "Click for more info",
@@ -398,6 +400,7 @@ slavery2: {
           4: "Surely",
           5: "Unlikely / Always Biracial",
           6: "Black Town or Township",
+          0: "Unknown / No Data"
         }[feature?.properties["confirmed"]],
       },
       {

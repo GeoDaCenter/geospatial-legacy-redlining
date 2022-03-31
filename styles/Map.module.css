@@ -61,12 +61,12 @@
     max-width:70ch;
 }
 .attributions {
-    
+    max-width:50ch;
     font-size:.65rem;
 }
-.attributions span {
+/* .attributions span {
     margin-left:1em;
-}
+} */
 
 .legend {
     display: flex;

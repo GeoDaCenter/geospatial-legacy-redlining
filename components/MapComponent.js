@@ -26,15 +26,15 @@ export default function MapComponent({
         slavery: {},
         sundown:{
             getRadius: dotScale,
-            onClick: ({ object }) => setPortal(`https://justice.tougaloo.edu/sundowntown/${object?.properties?.full_nm?.replace(/\s/g, '-').replace(',','').toLowerCase()}/`)
+            onClick: ({ object }) => setPortal(`https://justice.tougaloo.edu/sundowntown/${object?.properties?.full_name?.replace(/\s/g, '-').replace(',','').toLowerCase()}/`)
         },
         sundown2:{
             getRadius: dotScale,
-            onClick: ({ object }) => setPortal(`https://justice.tougaloo.edu/sundowntown/${object?.properties?.full_nm?.replace(/\s/g, '-').replace(',','').toLowerCase()}/`)
+            onClick: ({ object }) => setPortal(`https://justice.tougaloo.edu/sundowntown/${object?.properties?.full_name?.replace(/\s/g, '-').replace(',','').toLowerCase()}/`)
         },
         sundownDot:{
             getRadius: dotScale,
-            onClick: ({ object }) => setPortal(`https://justice.tougaloo.edu/sundowntown/${object?.properties?.full_nm?.replace(/\s/g, '-').replace(',','').toLowerCase()}/`)
+            onClick: ({ object }) => setPortal(`https://justice.tougaloo.edu/sundowntown/${object?.properties?.full_name?.replace(/\s/g, '-').replace(',','').toLowerCase()}/`)
         },
         violence: {
             getSize: dotScale,

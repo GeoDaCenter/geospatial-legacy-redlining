@@ -147,8 +147,7 @@ export default function Home() {
           {activeLayers.map(layer => <Legend key={`Legend-${layer}`} {...{ ...currBins[layer], title: LayerList.find(f => f.id === layer)?.label }} />)}
         </div>
         <div className={styles.attributions}>
-          {activeLayers.map(layer => <span key={`attribution-${layer}`}>{attributions[layer] || ''}<br /></span>)}
-          Map Data: © <a href="https://www.mapbox.com/about/maps/" target="_blank" rel="noreferrer">Mapbox</a> © <a href="https://www.openstreetmap.org/about/" target="_blank" rel="noreferrer">OpenStreetMap</a> <a href="https://www.mapbox.com/contribute/#/?q=&l=2.1234%2F32.9547%2F11" target="_blank" rel="noreferrer">Improve this map</a>
+          {activeLayers.map(layer => <span key={`attribution-${layer}`}>{attributions[layer] || ''}</span>)} Map Data: © <a href="https://www.mapbox.com/about/maps/" target="_blank" rel="noreferrer">Mapbox</a> © <a href="https://www.openstreetmap.org/about/" target="_blank" rel="noreferrer">OpenStreetMap</a> <a href="https://www.mapbox.com/contribute/#/?q=&l=2.1234%2F32.9547%2F11" target="_blank" rel="noreferrer">Improve this map</a>
         </div>
       </section>
       {!!portal && <section className={styles.portal}>
