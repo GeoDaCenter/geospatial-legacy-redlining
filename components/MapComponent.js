@@ -1,11 +1,16 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import DeckGL from "@deck.gl/react";
 import { GeoJsonLayer, ScatterplotLayer, IconLayer } from "@deck.gl/layers";
-import MapboxGLMap from "react-map-gl";
+import {StaticMap, MapContext, NavigationControl, Marker} from 'react-map-gl';
 import styles from '../styles/Map.module.css'
 import {
     layerSettings 
-} from '../map.config'
+} from '../map.config';
+import { findDOMNode } from "react-dom";
+
+const MAP_STYLE = 'mapbox://styles/csds-hiplab/cl1guqfvq001514s96n92ltey';
+const BARWIDTH = 20;
+const BARHEIGHT = 100;
 
 export default function MapComponent({
     activeLayers = ["slavery"],
@@ -14,6 +19,11 @@ export default function MapComponent({
     setPortal,
     bins
 }) {
+    const [holcCentroids, setHolcCentroids] = useState([])
+    useEffect(() => {
+        fetch('/geojson/HOLC_centroids.json').then(r => r.json()).then(setHolcCentroids)
+    },[])
+
     const [tooltipData, setTooltipData] = useState({
         data: null,
         x: null,
@@ -22,6 +32,7 @@ export default function MapComponent({
     const stringifiedBins = JSON.stringify(bins)
 
     const dotScale = view.zoom > 10 ? 250 : ((14 - view.zoom) ** 4) * 1.5
+
     const interactiveLayerSettings = {
         slavery: {},
         sundown:{
@@ -62,21 +73,34 @@ export default function MapComponent({
                 })
             }
         })
-        
+    
     return <div className={styles.mapContainer}>
         <DeckGL
             viewState={view}
             onViewStateChange={({ viewState }) => setView(viewState)}
             controller={true}
             layers={layers.filter(layer => activeLayers.includes(layer.id)).map(l => l.layer)}
-            pickingRadius={30}
+            pickingRadius={30} 
+            ContextProvider={MapContext.Provider}
         >
-            <MapboxGLMap
+            <StaticMap
                 reuseMaps
-                mapStyle={'mapbox://styles/csds-hiplab/ckznihohm003a14p6a8bgjpls'}
+                mapStyle={MAP_STYLE}
                 preventStyleDiffing={true}
-                mapboxAccessToken={process.env.NEXT_PUBLIC_MAPBOX_TOKEN}
+                mapboxApiAccessToken={process.env.NEXT_PUBLIC_MAPBOX_TOKEN}
             />
+            {activeLayers.includes('redlining') && holcCentroids.map(feature => <Marker key={feature.NAME} longitude={+feature.x} latitude={+feature.y}>
+              <div
+                style={{
+                    width:BARWIDTH,
+                    height:BARHEIGHT,
+                    transform:`translate(${-BARWIDTH/2}px,${-BARHEIGHT/2}px)`
+                }}
+              >
+
+                <StackedBarChart data={feature} />
+              </div>
+            </Marker>)}
         </DeckGL>
         {!!tooltipData.data && tooltipData.x !== -1 && <div className={styles.tooltip} style={{ left: tooltipData.x + 5, top: tooltipData.y + 5 }}>
             {tooltipData.data.map(entry => <p key={entry.title}>
@@ -84,3 +108,32 @@ export default function MapComponent({
         </div>}
     </div>
 }
+
+function StackedBarChart({data}){
+    const inner = writeElems(data, 0)
+    return <svg width={BARWIDTH} height={BARHEIGHT} viewBox={`0 0 ${BARWIDTH} ${BARHEIGHT}`}>{inner}</svg>
+}
+
+const grades = [{
+    grade: "A",
+    color: "rgba(115, 169, 77, 0.25)",
+  },{
+    grade: "B",
+    color: "rgba(52, 172, 198, 0.25)",
+  },{
+    grade: "C",
+    color: "rgba(219, 207, 0, 0.25)",
+  },{
+    grade: "D",
+    color: "rgb(226, 77, 90)",
+  }]
+
+function writeElems(row, baseX){    
+    let cumulativeTotal = 0;
+    const elems = grades.map(({grade, color}) => {
+      const el = <rect x={baseX} y={`${Math.round(cumulativeTotal*100)}%`} width="100%" height={`${row[grade]*100}%`} fill={color} />
+      cumulativeTotal+=row[grade]
+      return el
+    })
+    return elems
+  }
