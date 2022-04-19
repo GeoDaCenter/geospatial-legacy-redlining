@@ -6,7 +6,7 @@ import styles from '../styles/Map.module.css'
 import {
     layerSettings 
 } from '../map.config';
-import { findDOMNode } from "react-dom";
+import RechartsPie from './RechartsPie.js'
 
 const MAP_STYLE = 'mapbox://styles/csds-hiplab/cl1guqfvq001514s96n92ltey';
 const BARWIDTH = 20;
@@ -93,12 +93,11 @@ export default function MapComponent({
               <div
                 style={{
                     width:BARWIDTH,
-                    height:BARHEIGHT,
-                    transform:`translate(${-BARWIDTH/2}px,${-BARHEIGHT/2}px)`
+                    height:BARWIDTH,
+                    transform:`translate(${-BARWIDTH*2}px,${-BARHEIGHT/2}px)`
                 }}
               >
-
-                <StackedBarChart data={feature} />
+                  <RechartsPie data={feature} />
               </div>
             </Marker>)}
         </DeckGL>
