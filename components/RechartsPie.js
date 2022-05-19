@@ -36,6 +36,7 @@ function RechartsPie({
                 ))}
             </Pie>
             <text x="50" y="50" textAnchor="middle" fill="rgb(226, 77, 90)" fontSize="24" dy="6" fontWeight="bold">{pctRedlined}%</text>
+            <text x="50" y="50" textAnchor="middle" fill="rgb(226, 77, 90)" fontSize="8" dy="18" fontWeight="bold">redlined</text>
         </PieChart>
     )
 }
