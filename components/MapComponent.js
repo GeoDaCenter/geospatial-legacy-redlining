@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo  } from "react";
 import DeckGL from "@deck.gl/react";
 import { GeoJsonLayer, ScatterplotLayer, IconLayer } from "@deck.gl/layers";
 import {StaticMap, MapContext, NavigationControl, Marker} from 'react-map-gl';
@@ -7,6 +7,7 @@ import {
     layerSettings 
 } from '../map.config';
 import RechartsPie from './RechartsPie.js'
+import { scaleLinear } from "d3-scale";
 
 const MAP_STYLE = 'mapbox://styles/csds-hiplab/cl1guqfvq001514s96n92ltey';
 const BARWIDTH = 20;
@@ -19,9 +20,15 @@ export default function MapComponent({
     setPortal,
     bins
 }) {
+    const roundedZoom = Math.round(view.zoom)
+
+    const popScale = scaleLinear()
+        .domain([0, 250000])
+        .range([20,300])
+        
     const [holcCentroids, setHolcCentroids] = useState([])
     useEffect(() => {
-        fetch('/geojson/HOLC_centroids.json').then(r => r.json()).then(setHolcCentroids)
+        fetch('/geojson/HOLC_centroids_cities.json').then(r => r.json()).then(setHolcCentroids)
     },[])
 
     const [tooltipData, setTooltipData] = useState({
@@ -52,7 +59,9 @@ export default function MapComponent({
             onClick: ({ object }) => setPortal(object?.properties?.Source)      
         },
         lynchings:{},
-        redlining: {}
+        redlining: {
+            opacity: roundedZoom > 8 ? 1 : roundedZoom > 6 ? 0.5 : 0.1,
+        }
     };
     
     const layers = Object.keys(layerSettings)
@@ -73,7 +82,20 @@ export default function MapComponent({
                 })
             }
         })
-    
+
+    const markers = useMemo(() => activeLayers.includes('redlining') && roundedZoom < 9 ? <>
+        {holcCentroids.map(feature => <Marker key={feature.NAME} longitude={+feature.x} latitude={+feature.y}>
+            <div
+            style={{
+                width:BARWIDTH,
+                height:BARWIDTH,
+                transform:`translate(${-BARWIDTH*2}px,${-BARHEIGHT/2}px)`
+            }}
+            >
+                <RechartsPie data={feature} zoom={roundedZoom} popScale={popScale} />
+            </div>
+        </Marker>)}
+      </> : null,[JSON.stringify(activeLayers), roundedZoom])
     return <div className={styles.mapContainer}>
         <DeckGL
             viewState={view}
@@ -89,17 +111,7 @@ export default function MapComponent({
                 preventStyleDiffing={true}
                 mapboxApiAccessToken={process.env.NEXT_PUBLIC_MAPBOX_TOKEN}
             />
-            {activeLayers.includes('redlining') && holcCentroids.map(feature => <Marker key={feature.NAME} longitude={+feature.x} latitude={+feature.y}>
-              <div
-                style={{
-                    width:BARWIDTH,
-                    height:BARWIDTH,
-                    transform:`translate(${-BARWIDTH*2}px,${-BARHEIGHT/2}px)`
-                }}
-              >
-                  <RechartsPie data={feature} />
-              </div>
-            </Marker>)}
+            {markers}
         </DeckGL>
         {!!tooltipData.data && tooltipData.x !== -1 && <div className={styles.tooltip} style={{ left: tooltipData.x + 5, top: tooltipData.y + 5 }}>
             {tooltipData.data.map(entry => <p key={entry.title}>
