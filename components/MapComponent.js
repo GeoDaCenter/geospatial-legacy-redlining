@@ -1,7 +1,8 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import DeckGL from "@deck.gl/react";
 import { GeoJsonLayer, ScatterplotLayer, IconLayer } from "@deck.gl/layers";
-import {StaticMap, MapContext, NavigationControl, Marker} from 'react-map-gl';
+import Map, {StaticMap, MapContext, NavigationControl, Marker} from 'react-map-gl';
+import { MapboxLayer } from "@deck.gl/mapbox";
 import styles from '../styles/Map.module.css'
 import {
     layerSettings 
@@ -19,7 +20,11 @@ export default function MapComponent({
     setPortal,
     bins
 }) {
-    const [holcCentroids, setHolcCentroids] = useState([])
+    const [holcCentroids, setHolcCentroids] = useState([]);
+    const [glContext, setGLContext] = useState(null)
+    const mapRef = useRef(null)
+    const deckRef = useRef(null)
+
     useEffect(() => {
         fetch('/geojson/HOLC_centroids.json').then(r => r.json()).then(setHolcCentroids)
     },[])
@@ -73,21 +78,39 @@ export default function MapComponent({
                 })
             }
         })
-    
+
+    const onMapLoad = useCallback(() => {
+        if (mapRef.current === undefined) return;
+        const map = mapRef.current.getMap();
+        const deck = deckRef.current.deck;
+        const layersKeys = layers.map((f) => f.layer.props.id);
+        for (let i = 0; i < layersKeys.length; i++) {      
+            map.addLayer(
+            new MapboxLayer({ id: layersKeys[i], deck }), // add layer
+                "admin-1-boundary-bg" // add layer before this layer
+            );
+        } // eslint-disable-next-line react-hooks/exhaustive-deps
+        }, []);
+
     return <div className={styles.mapContainer}>
         <DeckGL
+            ref={deckRef}
             viewState={view}
             onViewStateChange={({ viewState }) => setView(viewState)}
             controller={true}
             layers={layers.filter(layer => activeLayers.includes(layer.id)).map(l => l.layer)}
             pickingRadius={30} 
             ContextProvider={MapContext.Provider}
+            onWebGLInitialized={setGLContext}
         >
-            <StaticMap
+            <Map
                 reuseMaps
+                ref={mapRef}
+                gl={glContext}
                 mapStyle={MAP_STYLE}
                 preventStyleDiffing={true}
                 mapboxApiAccessToken={process.env.NEXT_PUBLIC_MAPBOX_TOKEN}
+                onLoad={onMapLoad}
             />
             {activeLayers.includes('redlining') && holcCentroids.map(feature => <Marker key={feature.NAME} longitude={+feature.x} latitude={+feature.y}>
               <div

@@ -2,13 +2,13 @@ import { GeoJsonLayer, ScatterplotLayer, IconLayer } from "@deck.gl/layers";
 import { FillStyleExtension } from "@deck.gl/extensions";
 
 export const LayerList = [
-  { label: "Enslaved Persons in the US in 1860", id: "slavery" },
-  { label: "Sundown Towns (Centroid)", id: "sundownDot" },
-  { label: "Sundown Towns", id: "sundown" },
-  { label: "Sundown Towns Alt", id: "sundown2" },
-  { label: "Events of Mass Violence", id: "violence" },
-  { label: "Reported Lynchings by County", id: "lynchings" },
-  { label: "Redlining", id: "redlining" },
+  { label: "Percentage of Enslaved People per County (1860)", id: "slavery" },
+  { label: "Sundown Towns (1870-1970)", id: "sundownDot" },
+  // { label: "Sundown Towns", id: "sundown" },
+  // { label: "Sundown Towns Alt", id: "sundown2" },
+  { label: "White Supremacist Attacks on Black Communities (1824-1974)", id: "violence" },
+  { label: "Number of Lynchings in County (1870-1950)", id: "lynchings" },
+  { label: "Residential Security Maps (1935-1940)", id: "redlining" },
 ];
 
 export const DATA_URL = {
@@ -40,15 +40,18 @@ export const attributions = {
 
 export const bins = {
   slavery: {
-    bins: [500, 1000, 5000, 10000, 20000, 30000, 40000],
+    bins: [20,40,60,80,100],
     colors: [
-      [194,175,140],
-      [191,158,76,220],
-      [174,118,86,225],
-      [143,112,64, 225],
-      [98,78,60,225],
-      [69,49,49,225],
-      [171,64,64,225],
+      [254,235,226],
+      [251,180,185],
+      [247,104,161],
+      [197,27,138],
+      [122,1,119]
+      // [194,175,140],
+      // [143,112,64, 225],
+      // [98,78,60,225],
+      // [69,49,49,225],
+      // [171,64,64,225],
     ],
     separateZero: true,
     zeroColor: [0,0,0,0]
@@ -165,7 +168,7 @@ export const layerSettings = {
     getFillColor: (feature) =>
       getColor({
         ...bins.slavery,
-        val: feature?.properties["Slave Population"] || 0,
+        val: ((feature?.properties["Slave Population"] || 0)/(feature?.properties["Total Population"] || 1))* 100,
       }),
     tooltipValidateFunction: (feature) => !!feature?.properties?.NHGISNAM,
     tooltipDataFunction: (feature) => [
