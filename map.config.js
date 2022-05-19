@@ -278,7 +278,7 @@ export const layerSettings = {
   slavery2: {
     Layer: GeoJsonLayer,
     data: DATA_URL.slavery,
-    id: "slavery-layer",
+    id: "slavery-layer2",
     getFillColor: (feature) =>
       getColor({
         ...bins.slavery,
