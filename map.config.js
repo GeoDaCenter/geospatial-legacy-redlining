@@ -25,7 +25,7 @@ export const attributions = {
   slavery:
     "Enslaved Persons: US Decennial Census 1860, Accessed via Social Explorer. ",
   slavery2:
-  "Enslaved Persons: US Decennial Census 1860, Accessed via Social Explorer. ",
+    "Enslaved Persons: US Decennial Census 1860, Accessed via Social Explorer. ",
   sundown:
     "Sundown Towns: James W. Loewen and heirs (Nick Loewen) - History and Social Justice, Tougaloo College, 2022. ",
   sundown2:
@@ -40,14 +40,14 @@ export const attributions = {
 
 export const bins = {
   slavery: {
-    bins: [20,40,60,80,100],
+    bins: [20, 40, 60, 80, 100],
     colors: [
       // revised
-      [254,235,226],
-      [251,180,185],
-      [247,104,161],
-      [197,27,138],
-      [122,1,119]
+      [254, 235, 226],
+      [251, 180, 185],
+      [247, 104, 161],
+      [197, 27, 138],
+      [122, 1, 119]
 
       // previous
       // [194,175,140],
@@ -57,21 +57,21 @@ export const bins = {
       // [171,64,64,225],
     ],
     separateZero: true,
-    zeroColor: [0,0,0,0]
+    zeroColor: [0, 0, 0, 0]
   },
   slavery2: {
     bins: [0, 10, 25, 50, 60, 75, 100],
     colors: [
-      [237,248,251,220],
-      [191,211,230,220],
-      [158,188,218,220],
-      [140,150,198,220],
-      [140,107,177,220],
-      [136,65,157,220],
-      [110,1,107,220],
+      [237, 248, 251, 220],
+      [191, 211, 230, 220],
+      [158, 188, 218, 220],
+      [140, 150, 198, 220],
+      [140, 107, 177, 220],
+      [136, 65, 157, 220],
+      [110, 1, 107, 220],
     ],
     separateZero: true,
-    zeroColor: [0,0,0,0]
+    zeroColor: [0, 0, 0, 0]
   },
   sundown: {
     bins: [1, 2, 3, 4, 8, 9],
@@ -83,7 +83,7 @@ export const bins = {
       // [171,64,64,200],
       // [0,80,85,255],
       // [3,64,64,255],
-      
+
       // original
       // [255, 255, 178],
       // [254, 204, 92],
@@ -113,12 +113,12 @@ export const bins = {
   sundown2: {
     bins: [1, 2, 3, 4, 8, 9],
     colors: [
-      [171,64,64],
-      [171,64,64],
-      [171,64,64],
-      [171,64,64],
-      [0,80,85,255],
-      [3,64,64,255],
+      [171, 64, 64],
+      [171, 64, 64],
+      [171, 64, 64],
+      [171, 64, 64],
+      [0, 80, 85, 255],
+      [3, 64, 64, 255],
     ],
     labels: [
       "Don't Know",
@@ -140,7 +140,7 @@ export const bins = {
       // [171,64,64,200],
       // [0,80,85,255],
       // [3,64,64,255],
-      
+
       //first draft
       // [255, 255, 178],
       // [254, 204, 92],
@@ -150,12 +150,12 @@ export const bins = {
       // [36, 81, 211],
 
       // alt - dubois inspired
-      [197,176,154],
-      [219,180,173],
-      [194,48,80],
-      [138,0,30],
-      [70,140,35],
-      [38,38,220],
+      [197, 176, 154],
+      [219, 180, 173],
+      [194, 48, 80],
+      [138, 0, 30],
+      [70, 140, 35],
+      [38, 38, 220],
     ],
     labels: [
       "Don't Know",
@@ -204,13 +204,13 @@ export const bins = {
       // [255, 1, 128]
 
       // dubois opt 2 
-      
-      [225,213,196],
-      [223,196,137],
-      [218,168,87],
-      [200,93,75],
-      [150,34,54],
-      [14,16,12]
+
+      [225, 213, 196],
+      [223, 196, 137],
+      [218, 168, 87],
+      [200, 93, 75],
+      [150, 34, 54],
+      [14, 16, 12]
     ], separateZero: true,
   },
 };
@@ -223,14 +223,13 @@ export const layerSettings = {
     getFillColor: (feature) =>
       getColor({
         ...bins.slavery,
-        val: ((feature?.properties["Slave Population"] || 0)/(feature?.properties["Total Population"] || 1))* 100,
+        val: ((feature?.properties["Slave Population"] || 0) / (feature?.properties["Total Population"] || 1)) * 100,
       }),
     tooltipValidateFunction: (feature) => !!feature?.properties?.NHGISNAM,
     tooltipDataFunction: (feature) => [
       {
-        title: `${feature?.properties?.NHGISNAM}, ${
-          feature?.properties?.STATENAM || "Undesignated"
-        }`,
+        title: `${feature?.properties?.NHGISNAM}, ${feature?.properties?.STATENAM || "Undesignated"
+          }`,
         text: "",
       },
       {
@@ -247,10 +246,9 @@ export const layerSettings = {
       },
       {
         title: `Percent Slave Population`,
-        text: `${
-          Math.round((feature?.properties["Percent Pop Slave "] || 0) * 100) /
+        text: `${Math.round((feature?.properties["Percent Pop Slave "] || 0) * 100) /
           100
-        }%`,
+          }%`,
       },
       {
         title: `Free People of Color`,
@@ -261,14 +259,13 @@ export const layerSettings = {
       },
       {
         title: `Percent Free People of Color`,
-        text: `${
-          Math.round(
-            (feature?.properties["Percent Pop Free of Color"] || 0) * 100
-          ) / 100
-        }%`,
+        text: `${Math.round(
+          (feature?.properties["Percent Pop Free of Color"] || 0) * 100
+        ) / 100
+          }%`,
       },
     ],
-    getLineColor: [115,115,115, 40],
+    getLineColor: [115, 115, 115, 40],
     getLineWidth: 1,
     lineWidthMinPixels: 1,
     lineWidthMaxPixels: 1,
@@ -279,7 +276,7 @@ export const layerSettings = {
     extruded: false,
   },
 
-slavery2: {
+  slavery2: {
     Layer: GeoJsonLayer,
     data: DATA_URL.slavery,
     id: "slavery-layer",
@@ -291,9 +288,8 @@ slavery2: {
     tooltipValidateFunction: (feature) => !!feature?.properties?.NHGISNAM,
     tooltipDataFunction: (feature) => [
       {
-        title: `${feature?.properties?.NHGISNAM}, ${
-          feature?.properties?.STATENAM || "Undesignated"
-        }`,
+        title: `${feature?.properties?.NHGISNAM}, ${feature?.properties?.STATENAM || "Undesignated"
+          }`,
         text: "",
       },
       {
@@ -310,10 +306,9 @@ slavery2: {
       },
       {
         title: `Percent Slave Population`,
-        text: `${
-          Math.round((feature?.properties["Percent Pop Slave "] || 0) * 100) /
+        text: `${Math.round((feature?.properties["Percent Pop Slave "] || 0) * 100) /
           100
-        }%`,
+          }%`,
       },
       {
         title: `Free People of Color`,
@@ -324,14 +319,13 @@ slavery2: {
       },
       {
         title: `Percent Free People of Color`,
-        text: `${
-          Math.round(
-            (feature?.properties["Percent Pop Free of Color"] || 0) * 100
-          ) / 100
-        }%`,
+        text: `${Math.round(
+          (feature?.properties["Percent Pop Free of Color"] || 0) * 100
+        ) / 100
+          }%`,
       },
     ],
-    getLineColor: [115,115,115, 40],
+    getLineColor: [115, 115, 115, 40],
     getLineWidth: 1,
     lineWidthMinPixels: 1,
     lineWidthMaxPixels: 1,
@@ -350,7 +344,7 @@ slavery2: {
         ...bins.sundown,
         val: d?.properties["confirmed"],
       }),
-    getLineColor: [0, 0, 0,0],
+    getLineColor: [0, 0, 0, 0],
     pickable: true,
     stroked: true,
     filled: true,
@@ -436,7 +430,7 @@ slavery2: {
         ...bins.sundownDot,
         val: d?.properties["confirmed"],
       }),
-    getLineColor: [0, 0, 0,0],
+    getLineColor: [0, 0, 0, 0],
     pickable: true,
     stroked: true,
     filled: true,
@@ -520,7 +514,7 @@ slavery2: {
         ...bins.lynchings,
         val: d?.properties["LYNCHINGS"] || 0,
       }),
-    getLineColor: [115,115,115, 80],
+    getLineColor: [115, 115, 115, 80],
     getLineWidth: 2,
     lineWidthMinPixels: 1,
     lineWidthMaxPixels: 1,
@@ -558,26 +552,23 @@ slavery2: {
     tooltipValidateFunction: (feature) => !!feature?.properties?.city,
     tooltipDataFunction: (feature) => [
       {
-        title: `${
-          feature?.properties?.name ? `${feature?.properties?.name}, ` : ""
-        }${feature?.properties?.city ? `${feature?.properties?.city}, ` : ""}${
-          feature?.properties?.state ? `${feature?.properties?.state}, ` : ""
-        }`.slice(0, -2),
+        title: `${feature?.properties?.name ? `${feature?.properties?.name}, ` : ""
+          }${feature?.properties?.city ? `${feature?.properties?.city}, ` : ""}${feature?.properties?.state ? `${feature?.properties?.state}, ` : ""
+          }`.slice(0, -2),
         text: "",
       },
       {
         title: "HOLC Grade",
-        text: `${feature?.properties?.holc_grade} (${
-          { A: "Best", B: "Still Desirable", C: "Declining", D: "Hazardous" }[
-            feature?.properties?.holc_grade
+        text: `${feature?.properties?.holc_grade} (${{ A: "Best", B: "Still Desirable", C: "Declining", D: "Hazardous" }[
+          feature?.properties?.holc_grade
           ]
-        })`,
+          })`,
       },
     ],
   },
 };
 
-function getColor({ val, bins, colors, separateZero, zeroColor=[255,2,255] }) {
+function getColor({ val, bins, colors, separateZero, zeroColor = [255, 2, 255] }) {
   if (separateZero && val === 0) return zeroColor;
   for (let i = 0; i < bins.length; i++) {
     if (val <= bins[i]) return colors[i];
