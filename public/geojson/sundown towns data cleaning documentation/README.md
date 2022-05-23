@@ -1,14 +1,3 @@
----
-title: "Generating Sundown Town Areas"
-author: "Isaac Rand"
-date: "4/4/2022"
-output: html_document
----
-
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-```
-
 ## The Original Data
 
 The original data for the project was sourced from James Loewen's [Historical Database of Sundown Towns](https://justice.tougaloo.edu/sundown-towns/using-the-sundown-towns-database/state-map/). The data was in a spatial format already, with all town locations saved as points, but some of the points were in the wrong location. For this project, we wanted to find all the misplaced points, re-place them in the correct location, and generate area boundaries representing each town in addition to the points.
