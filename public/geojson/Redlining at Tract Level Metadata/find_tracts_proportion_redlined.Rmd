@@ -1,0 +1,186 @@
+---
+title: "Finding Proportion of Each Tract Redlined"
+output:
+  pdf_document: default
+  html_notebook: default
+---
+
+```{r}
+library(tidyverse)
+library(sf)
+```
+
+
+
+#### loading data
+
+```{r}
+# read in holc boundaries
+holc_boundaries <- st_read("C:/Users/isaac/Desktop/HEROP/finding proportion of tracts redlined/data/HOLC.geojson")
+holc_boundaries <- st_transform(holc_boundaries, 5069)
+
+# read in us tract boundaries
+all_us_tracts <- st_read("C:/Users/isaac/Desktop/HEROP/identifying sundown tracts/data/nhgis0012_shape/nhgis0012_shape/nhgis0012_shapefile_tl2020_us_tract_2020/US_tract_2020.shp")
+all_us_tracts <- st_transform(all_us_tracts, 5069)
+
+# read in boundary of city of Chicago
+chi_boundary <- st_read("C:/Users/isaac/Desktop/HEROP/finding proportion of tracts redlined/data/chicago_boundary/chicago_boundary.shp")
+chi_boundary <- st_transform(chi_boundary, 5069) %>%
+  select(c(name))
+```
+
+
+#### doing the calculations for chicago
+
+This is designed for the ChiVes project
+
+##### clipping files to chicago boundary
+```{r}
+# clips the holc boundaries ot chicago's Limits
+chi_holc_boundaries <- st_intersection(holc_boundaries, chi_boundary) %>%
+  select(-c(name.1))
+
+# clips the tracts to Chicago's limits
+chi_tracts <- st_intersection(all_us_tracts, chi_boundary)
+
+# some of the holc boundaries called "chicago" are not actually within city limits. 
+#I'm doing this just for tracts in city limits but if you uncomment these two lines it will do it for any holc boundary called in Chicago
+# chi_holc_boundaries <- holc_boundaries %>%
+#   filter(city == "Chicago")
+
+
+```
+
+##### actual calculations
+```{r}
+chi_tracts$proportionA <- NA
+chi_tracts$proportionB <- NA
+chi_tracts$proportionC <- NA
+chi_tracts$proportionD <- NA
+
+# loop through all tracts
+for(i in 1:nrow(chi_tracts)){
+ # assign each tract in turn to tract
+ tract <- chi_tracts[i,]
+ # calculate total area of the current tract
+ area_tract <- st_area(tract)
+ # find all of the holc boudaries which are in the current tract
+ holc_in_tract <- st_intersection(tract, chi_holc_boundaries)
+ # calculate the proportions - how much of the area within each tract is assigned to each category by HOLC
+ chi_tracts[i,]$proportionA <- sum(st_area(holc_in_tract %>% filter(holc_grade == "A"))) / area_tract
+ chi_tracts[i,]$proportionB <- sum(st_area(holc_in_tract %>% filter(holc_grade == "B"))) / area_tract
+ chi_tracts[i,]$proportionC <- sum(st_area(holc_in_tract %>% filter(holc_grade == "C"))) / area_tract
+ chi_tracts[i,]$proportionD <- sum(st_area(holc_in_tract %>% filter(holc_grade == "D"))) / area_tract
+ # print i because this takes a little while, this way you cna keep an eye on if its running
+ print(i)
+}
+
+# calculate the proportion of each tract which is C or D by adding the two already existing variables for C and D together
+chi_tracts$proportionCorD <- chi_tracts$proportionC + chi_tracts$proportionD
+
+# make a list of all proportions
+all_grades_vectors <- list(a = chi_tracts$proportionA, 
+                           b = chi_tracts$proportionB, 
+                           c = chi_tracts$proportionC, 
+                           d = chi_tracts$proportionD, 
+                           cd = chi_tracts$proportionCorD)
+# assign the primargy grade to the category which covers the greatest proportion of tract area
+chi_tracts$primary_grade_4levels <- pmap(all_grades_vectors, function(a,b,c,d,cd) which(c(a,b,c,d) == max(c(a,b,c,d)))) %>%
+  map(~ifelse(length(.) > 1, NA, .)) %>%
+  unlist() %>%
+  as.factor()
+# rename the categories in primary_grade_4levels from 1,2,3,4 to A,B,C,D
+levels(chi_tracts$primary_grade_4levels) <- c("A","B","C","D")
+
+#  assign the primargy grade to the category which covers the greatest proportion of tract area, but consider C and D together
+chi_tracts$primary_grade_3levels <- pmap(all_grades_vectors, function(a,b,c,d,cd) which(c(a,b,cd) == max(c(a,b,cd)))) %>%
+  map(~ifelse(length(.) > 1, NA, .)) %>%
+  unlist() %>%
+  as.factor()
+       
+# rename the categories in primary_grade_4levels from 1,2,3 to A,B,CD
+levels(chi_tracts$primary_grade_3levels) <- c("A","B","CD")
+
+```
+
+
+
+```{r}
+# include only those tracts in which more than half of the tract was categorized by HOLC
+chi_tracts_mostly_covered <- chi_tracts %>%
+  filter(proportionA + proportionB + proportionCorD > 0.5)
+```
+
+```{r}
+# write output
+st_write(chi_tracts_mostly_covered, "C:/Users/isaac/Desktop/HEROP/finding proportion of tracts redlined/data/HOLC_by_tracts_chicago_AtLeastOneHalfCovered.geojson")
+write.csv(chi_tracts_mostly_covered %>% st_drop_geometry(), "C:/Users/isaac/Desktop/HEROP/finding proportion of tracts redlined/data/HOLC_by_tracts_chicago_AtLeastOneHalfCovered.csv")
+
+st_write(chi_tracts, "C:/Users/isaac/Desktop/HEROP/finding proportion of tracts redlined/data/HOLC_by_tracts_chicago.geojson")
+
+```
+
+#### doing the calculations for the whole country
+```{r}
+all_us_tracts$proportionA <- NA
+all_us_tracts$proportionB <- NA
+all_us_tracts$proportionC <- NA
+all_us_tracts$proportionD <- NA
+
+tracts_holc_intersect <- st_intersection(all_us_tracts,holc_boundaries)
+
+pb <- txtProgressBar(min = 0,      # Minimum value of the progress bar
+                     max = length(unique(tracts_holc_intersect$GISJOIN)), # Maximum value of the progress bar
+                     style = 3,    # Progress bar style (also available style = 1 and style = 2)
+                     width = 50,   # Progress bar width. Defaults to getOption("width")
+                     char = "=")   # Character used to create the bar
+
+# if you want to do this in pieces, change increase j to start from the j'th term
+j <- 1
+
+for(i in (unique(tracts_holc_intersect$GISJOIN))[j:length((unique(tracts_holc_intersect$GISJOIN)))]  ){
+  holc_in_tract <- tracts_holc_intersect[tracts_holc_intersect$GISJOIN == i,]
+  area_tract <- (st_area(all_us_tracts[all_us_tracts$GISJOIN == i,]))
+  
+  all_us_tracts[all_us_tracts$GISJOIN == i,]$proportionA <- sum(st_area(holc_in_tract %>% filter(holc_grade == "A"))) / area_tract
+  all_us_tracts[all_us_tracts$GISJOIN == i,]$proportionB <- sum(st_area(holc_in_tract %>% filter(holc_grade == "B"))) / area_tract
+  all_us_tracts[all_us_tracts$GISJOIN == i,]$proportionC <- sum(st_area(holc_in_tract %>% filter(holc_grade == "C"))) / area_tract
+  all_us_tracts[all_us_tracts$GISJOIN == i,]$proportionD <- sum(st_area(holc_in_tract %>% filter(holc_grade == "D"))) / area_tract
+
+  print(j)
+  j <- j + 1
+
+
+}
+
+all_us_tracts$proportionCorD <- all_us_tracts$proportionC + all_us_tracts$proportionD
+all_grades_vectors <- list(a = all_us_tracts$proportionA, 
+                           b = all_us_tracts$proportionB, 
+                           c = all_us_tracts$proportionC, 
+                           d = all_us_tracts$proportionD, 
+                           cd = all_us_tracts$proportionCorD)
+all_us_tracts$primary_grade_4levels <- pmap(all_grades_vectors, function(a,b,c,d,cd) which(c(a,b,c,d) == max(c(a,b,c,d)))) %>%
+  map(~ifelse(length(.) > 1, NA, .)) %>%
+  unlist() %>%
+  as.factor()
+
+levels(all_us_tracts$primary_grade_4levels) <- c("A","B","C","D")
+
+all_us_tracts$primary_grade_3levels <- pmap(all_grades_vectors, function(a,b,c,d,cd) which(c(a,b,cd) == max(c(a,b,cd)))) %>%
+  map(~ifelse(length(.) > 1, NA, .)) %>%
+  unlist() %>%
+  as.factor()
+       
+
+levels(all_us_tracts$primary_grade_3levels) <- c("A","B","CD")
+close(pb)
+```
+
+
+
+```{r}
+all_us_tracts <- all_us_tracts %>%
+  select(-c(ALAND, AWATER,INTPTLAT, INTPTLON))
+st_write(all_us_tracts, "C:/Users/isaac/Desktop/HEROP/finding proportion of tracts redlined/data/HOLC_by_tracts_usa2.shp")
+
+```
