@@ -1,0 +1,796 @@
+state,city,holc_grade,count_tracts,perc_tracts,state.name,fullname,pop20
+CA,Oakland,A,12,0.1,California,"Oakland, California",422575
+CA,Oakland,B,46,0.39,California,"Oakland, California",422575
+CA,Oakland,C,41,0.34,California,"Oakland, California",422575
+CA,Oakland,D,20,0.17,California,"Oakland, California",422575
+PA,Lancaster,A,10,0.3,Pennsylvania,"Lancaster, Pennsylvania",59321
+PA,Lancaster,B,20,0.61,Pennsylvania,"Lancaster, Pennsylvania",59321
+PA,Lancaster,C,1,0.03,Pennsylvania,"Lancaster, Pennsylvania",59321
+PA,Lancaster,D,2,0.06,Pennsylvania,"Lancaster, Pennsylvania",59321
+GA,Macon,A,2,0.05,Georgia,"Macon, Georgia",153026
+GA,Macon,B,6,0.15,Georgia,"Macon, Georgia",153026
+GA,Macon,C,16,0.4,Georgia,"Macon, Georgia",153026
+GA,Macon,D,16,0.4,Georgia,"Macon, Georgia",153026
+CA,Fresno,A,2,0.08,California,"Fresno, California",526147
+CA,Fresno,B,5,0.21,California,"Fresno, California",526147
+CA,Fresno,C,9,0.38,California,"Fresno, California",526147
+CA,Fresno,D,8,0.33,California,"Fresno, California",526147
+PA,Erie,A,4,0.09,Pennsylvania,"Erie, Pennsylvania",96616
+PA,Erie,B,17,0.36,Pennsylvania,"Erie, Pennsylvania",96616
+PA,Erie,C,19,0.4,Pennsylvania,"Erie, Pennsylvania",96616
+PA,Erie,D,7,0.15,Pennsylvania,"Erie, Pennsylvania",96616
+PA,York,A,4,0.15,Pennsylvania,"York, Pennsylvania",44019
+PA,York,B,7,0.26,Pennsylvania,"York, Pennsylvania",44019
+PA,York,C,9,0.33,Pennsylvania,"York, Pennsylvania",44019
+PA,York,D,7,0.26,Pennsylvania,"York, Pennsylvania",44019
+PA,Johnstown,B,6,0.17,Pennsylvania,"Johnstown, Pennsylvania",19381
+PA,Johnstown,C,15,0.43,Pennsylvania,"Johnstown, Pennsylvania",19381
+PA,Johnstown,D,14,0.4,Pennsylvania,"Johnstown, Pennsylvania",19381
+KY,Louisville,A,8,0.15,Kentucky,"Louisville, Kentucky",618733
+KY,Louisville,B,16,0.3,Kentucky,"Louisville, Kentucky",618733
+KY,Louisville,C,17,0.31,Kentucky,"Louisville, Kentucky",618733
+KY,Louisville,D,13,0.24,Kentucky,"Louisville, Kentucky",618733
+WI,Madison,A,5,0.13,Wisconsin,"Madison, Wisconsin",258366
+WI,Madison,B,9,0.23,Wisconsin,"Madison, Wisconsin",258366
+WI,Madison,C,15,0.38,Wisconsin,"Madison, Wisconsin",258366
+WI,Madison,D,10,0.26,Wisconsin,"Madison, Wisconsin",258366
+NC,Charlotte,A,3,0.09,North Carolina,"Charlotte, North Carolina",873570
+NC,Charlotte,B,7,0.21,North Carolina,"Charlotte, North Carolina",873570
+NC,Charlotte,C,13,0.38,North Carolina,"Charlotte, North Carolina",873570
+NC,Charlotte,D,11,0.32,North Carolina,"Charlotte, North Carolina",873570
+KY,Lexington,A,4,0.14,Kentucky,"Lexington, Kentucky",322200
+KY,Lexington,B,5,0.17,Kentucky,"Lexington, Kentucky",322200
+KY,Lexington,C,12,0.41,Kentucky,"Lexington, Kentucky",322200
+KY,Lexington,D,8,0.28,Kentucky,"Lexington, Kentucky",322200
+PA,Bethlehem,A,2,0.09,Pennsylvania,"Bethlehem, Pennsylvania",75571
+PA,Bethlehem,B,6,0.26,Pennsylvania,"Bethlehem, Pennsylvania",75571
+PA,Bethlehem,C,8,0.35,Pennsylvania,"Bethlehem, Pennsylvania",75571
+PA,Bethlehem,D,7,0.3,Pennsylvania,"Bethlehem, Pennsylvania",75571
+PA,Altoona,A,2,0.07,Pennsylvania,"Altoona, Pennsylvania",43669
+PA,Altoona,B,13,0.43,Pennsylvania,"Altoona, Pennsylvania",43669
+PA,Altoona,C,10,0.33,Pennsylvania,"Altoona, Pennsylvania",43669
+PA,Altoona,D,5,0.17,Pennsylvania,"Altoona, Pennsylvania",43669
+MA,Revere,C,3,0.75,Massachusetts,"Revere, Massachusetts",53400
+MA,Revere,D,1,0.25,Massachusetts,"Revere, Massachusetts",53400
+MA,Malden,B,1,0.17,Massachusetts,"Malden, Massachusetts",60710
+MA,Malden,C,3,0.5,Massachusetts,"Malden, Massachusetts",60710
+MA,Malden,D,2,0.33,Massachusetts,"Malden, Massachusetts",60710
+MA,Watertown,B,1,0.2,Massachusetts,"Watertown, Massachusetts",35749
+MA,Watertown,C,3,0.6,Massachusetts,"Watertown, Massachusetts",35749
+MA,Watertown,D,1,0.2,Massachusetts,"Watertown, Massachusetts",35749
+NY,Queens,A,1,0.01,New York,"Queens, New York",2331143
+NY,Queens,B,17,0.1,New York,"Queens, New York",2331143
+NY,Queens,C,111,0.66,New York,"Queens, New York",2331143
+NY,Queens,D,39,0.23,New York,"Queens, New York",2331143
+MO,Greater Kansas City,A,10,0.08,Missouri,"Greater Kansas City, Missouri",491158
+MO,Greater Kansas City,B,23,0.19,Missouri,"Greater Kansas City, Missouri",491158
+MO,Greater Kansas City,C,47,0.39,Missouri,"Greater Kansas City, Missouri",491158
+MO,Greater Kansas City,D,40,0.33,Missouri,"Greater Kansas City, Missouri",491158
+PA,New Castle,A,3,0.12,Pennsylvania,"New Castle, Pennsylvania",21805
+PA,New Castle,B,6,0.23,Pennsylvania,"New Castle, Pennsylvania",21805
+PA,New Castle,C,8,0.31,Pennsylvania,"New Castle, Pennsylvania",21805
+PA,New Castle,D,9,0.35,Pennsylvania,"New Castle, Pennsylvania",21805
+NY,Staten Island,A,4,0.06,New York,"Staten Island, New York","475,596"
+NY,Staten Island,B,15,0.23,New York,"Staten Island, New York","475,596"
+NY,Staten Island,C,24,0.36,New York,"Staten Island, New York","475,596"
+NY,Staten Island,D,23,0.35,New York,"Staten Island, New York","475,596"
+IN,Lake Co. Gary,A,7,0.12,Indiana,"Lake Co. Gary, Indiana",75486
+IN,Lake Co. Gary,B,13,0.23,Indiana,"Lake Co. Gary, Indiana",75486
+IN,Lake Co. Gary,C,23,0.4,Indiana,"Lake Co. Gary, Indiana",75486
+IN,Lake Co. Gary,D,14,0.25,Indiana,"Lake Co. Gary, Indiana",75486
+GA,Augusta,A,1,0.03,Georgia,"Augusta, Georgia",197535
+GA,Augusta,B,9,0.3,Georgia,"Augusta, Georgia",197535
+GA,Augusta,C,8,0.27,Georgia,"Augusta, Georgia",197535
+GA,Augusta,D,12,0.4,Georgia,"Augusta, Georgia",197535
+MA,Chelsea,C,4,0.8,Massachusetts,"Chelsea, Massachusetts",39878
+MA,Chelsea,D,1,0.2,Massachusetts,"Chelsea, Massachusetts",39878
+MA,Braintree,A,1,0.12,Massachusetts,"Braintree, Massachusetts","	37196"
+MA,Braintree,B,5,0.62,Massachusetts,"Braintree, Massachusetts","	37196"
+MA,Braintree,C,2,0.25,Massachusetts,"Braintree, Massachusetts","	37196"
+MA,Boston,A,1,0.03,Massachusetts,"Boston, Massachusetts",689326
+MA,Boston,B,8,0.21,Massachusetts,"Boston, Massachusetts",689326
+MA,Boston,C,18,0.46,Massachusetts,"Boston, Massachusetts",689326
+MA,Boston,D,12,0.31,Massachusetts,"Boston, Massachusetts",689326
+MA,Brockton,A,2,0.12,Massachusetts,"Brockton, Massachusetts",95740
+MA,Brockton,B,3,0.19,Massachusetts,"Brockton, Massachusetts",95740
+MA,Brockton,C,10,0.62,Massachusetts,"Brockton, Massachusetts",95740
+MA,Brockton,D,1,0.06,Massachusetts,"Brockton, Massachusetts",95740
+WI,Kenosha,A,1,0.04,Wisconsin,"Kenosha, Wisconsin",99767
+WI,Kenosha,B,4,0.17,Wisconsin,"Kenosha, Wisconsin",99767
+WI,Kenosha,C,10,0.43,Wisconsin,"Kenosha, Wisconsin",99767
+WI,Kenosha,D,8,0.35,Wisconsin,"Kenosha, Wisconsin",99767
+MA,Chelsea,C,4,0.8,Massachusetts,"Chelsea, Massachusetts",39878
+MA,Chelsea,D,1,0.2,Massachusetts,"Chelsea, Massachusetts",39878
+NH,Manchester,A,1,0.04,New Hampshire,"Manchester, New Hampshire",112441
+NH,Manchester,B,3,0.12,New Hampshire,"Manchester, New Hampshire",112441
+NH,Manchester,C,11,0.42,New Hampshire,"Manchester, New Hampshire",112441
+NH,Manchester,D,11,0.42,New Hampshire,"Manchester, New Hampshire",112441
+NJ,Hudson Co.,B,7,0.12,New Jersey,"Hudson Co., New Jersey","671,923"
+NJ,Hudson Co.,C,22,0.37,New Jersey,"Hudson Co., New Jersey","671,923"
+NJ,Hudson Co.,D,31,0.52,New Jersey,"Hudson Co., New Jersey","671,923"
+MA,Newton,A,3,0.2,Massachusetts,"Newton, Massachusetts",88322
+MA,Newton,B,7,0.47,Massachusetts,"Newton, Massachusetts",88322
+MA,Newton,C,3,0.2,Massachusetts,"Newton, Massachusetts",88322
+MA,Newton,D,2,0.13,Massachusetts,"Newton, Massachusetts",88322
+MA,Winthrop,B,3,0.43,Massachusetts,"Winthrop, Massachusetts",18558
+MA,Winthrop,C,2,0.29,Massachusetts,"Winthrop, Massachusetts",18558
+MA,Winthrop,D,2,0.29,Massachusetts,"Winthrop, Massachusetts",18558
+NY,Lower Westchester Co.,A,18,0.2,New York,"Lower Westchester Co., New York","968,738"
+NY,Lower Westchester Co.,B,30,0.33,New York,"Lower Westchester Co., New York","968,738"
+NY,Lower Westchester Co.,C,28,0.31,New York,"Lower Westchester Co., New York","968,738"
+NY,Lower Westchester Co.,D,14,0.16,New York,"Lower Westchester Co., New York","968,738"
+NJ,Union Co.,A,18,0.14,New Jersey,"Union Co., New Jersey",2591
+NJ,Union Co.,B,38,0.29,New Jersey,"Union Co., New Jersey",2591
+NJ,Union Co.,C,51,0.39,New Jersey,"Union Co., New Jersey",2591
+NJ,Union Co.,D,24,0.18,New Jersey,"Union Co., New Jersey",2591
+MA,Revere,C,3,0.75,Massachusetts,"Revere, Massachusetts",53400
+MA,Revere,D,1,0.25,Massachusetts,"Revere, Massachusetts",53400
+NJ,Bergen Co.,A,10,0.06,New Jersey,"Bergen Co., New Jersey","931,275"
+NJ,Bergen Co.,B,52,0.32,New Jersey,"Bergen Co., New Jersey","931,275"
+NJ,Bergen Co.,C,75,0.47,New Jersey,"Bergen Co., New Jersey","931,275"
+NJ,Bergen Co.,D,24,0.15,New Jersey,"Bergen Co., New Jersey","931,275"
+NY,Brooklyn,A,1,0.02,New York,"Brooklyn, New York",2577000
+NY,Brooklyn,B,17,0.26,New York,"Brooklyn, New York",2577000
+NY,Brooklyn,C,25,0.38,New York,"Brooklyn, New York",2577000
+NY,Brooklyn,D,23,0.35,New York,"Brooklyn, New York",2577000
+MA,Waltham,A,1,0.12,Massachusetts,"Waltham, Massachusetts",62597
+MA,Waltham,B,4,0.5,Massachusetts,"Waltham, Massachusetts",62597
+MA,Waltham,C,2,0.25,Massachusetts,"Waltham, Massachusetts",62597
+MA,Waltham,D,1,0.12,Massachusetts,"Waltham, Massachusetts",62597
+PA,Chester,A,6,0.29,Pennsylvania,"Chester, Pennsylvania",33855
+PA,Chester,B,6,0.29,Pennsylvania,"Chester, Pennsylvania",33855
+PA,Chester,C,6,0.29,Pennsylvania,"Chester, Pennsylvania",33855
+PA,Chester,D,3,0.14,Pennsylvania,"Chester, Pennsylvania",33855
+NY,Bronx,A,2,0.05,New York,"Bronx, New York",1427000
+NY,Bronx,B,11,0.25,New York,"Bronx, New York",1427000
+NY,Bronx,C,23,0.52,New York,"Bronx, New York",1427000
+NY,Bronx,D,7,0.16,New York,"Bronx, New York",1427000
+NY,Bronx,E,1,0.02,New York,"Bronx, New York",1427000
+MA,Medford,A,2,0.18,Massachusetts,"Medford, Massachusetts",58290
+MA,Medford,B,3,0.27,Massachusetts,"Medford, Massachusetts",58290
+MA,Medford,C,6,0.55,Massachusetts,"Medford, Massachusetts",58290
+NY,Manhattan,A,8,0.15,New York,"Manhattan, New York",1629000
+NY,Manhattan,B,12,0.23,New York,"Manhattan, New York",1629000
+NY,Manhattan,C,6,0.11,New York,"Manhattan, New York",1629000
+NY,Manhattan,D,27,0.51,New York,"Manhattan, New York",1629000
+PA,Pittsburgh,A,11,0.1,Pennsylvania,"Pittsburgh, Pennsylvania",301286
+PA,Pittsburgh,B,27,0.24,Pennsylvania,"Pittsburgh, Pennsylvania",301286
+PA,Pittsburgh,C,42,0.37,Pennsylvania,"Pittsburgh, Pennsylvania",301286
+PA,Pittsburgh,D,34,0.3,Pennsylvania,"Pittsburgh, Pennsylvania",301286
+WV,Huntington,A,8,0.21,West Virginia,"Huntington, West Virginia",13526
+WV,Huntington,B,10,0.26,West Virginia,"Huntington, West Virginia",13526
+WV,Huntington,C,16,0.42,West Virginia,"Huntington, West Virginia",13526
+WV,Huntington,D,4,0.11,West Virginia,"Huntington, West Virginia",13526
+NJ,Essex Co.,A,31,0.22,New Jersey,"Essex Co., New Jersey",17356
+NJ,Essex Co.,B,46,0.32,New Jersey,"Essex Co., New Jersey",17356
+NJ,Essex Co.,C,44,0.31,New Jersey,"Essex Co., New Jersey",17356
+NJ,Essex Co.,D,22,0.15,New Jersey,"Essex Co., New Jersey",17356
+RI,Pawtucket & Central Falls,A,4,0.24,Rhode Island,"Pawtucket & Central Falls, Rhode Island",19437
+RI,Pawtucket & Central Falls,B,6,0.35,Rhode Island,"Pawtucket & Central Falls, Rhode Island",19437
+RI,Pawtucket & Central Falls,C,5,0.29,Rhode Island,"Pawtucket & Central Falls, Rhode Island",19437
+RI,Pawtucket & Central Falls,D,2,0.12,Rhode Island,"Pawtucket & Central Falls, Rhode Island",19437
+OH,Portsmouth,A,3,0.14,Ohio,"Portsmouth, Ohio",20094
+OH,Portsmouth,B,3,0.14,Ohio,"Portsmouth, Ohio",20094
+OH,Portsmouth,C,8,0.38,Ohio,"Portsmouth, Ohio",20094
+OH,Portsmouth,D,7,0.33,Ohio,"Portsmouth, Ohio",20094
+MA,Winchester,A,1,0.12,Massachusetts,"Winchester, Massachusetts",22760
+MA,Winchester,B,6,0.75,Massachusetts,"Winchester, Massachusetts",22760
+MA,Winchester,C,1,0.12,Massachusetts,"Winchester, Massachusetts",22760
+MA,Dedham,B,3,0.3,Massachusetts,"Dedham, Massachusetts",25330
+MA,Dedham,C,5,0.5,Massachusetts,"Dedham, Massachusetts",25330
+MA,Dedham,D,2,0.2,Massachusetts,"Dedham, Massachusetts",25330
+MA,Belmont,A,4,0.25,Massachusetts,"Belmont, Massachusetts",26158
+MA,Belmont,B,7,0.44,Massachusetts,"Belmont, Massachusetts",26158
+MA,Belmont,C,4,0.25,Massachusetts,"Belmont, Massachusetts",26158
+MA,Belmont,D,1,0.06,Massachusetts,"Belmont, Massachusetts",26158
+IL,East St. Louis,A,7,0.15,Illinois,"East St. Louis, Illinois",26359
+IL,East St. Louis,B,9,0.19,Illinois,"East St. Louis, Illinois",26359
+IL,East St. Louis,C,16,0.34,Illinois,"East St. Louis, Illinois",26359
+IL,East St. Louis,D,15,0.32,Illinois,"East St. Louis, Illinois",26359
+WV,Wheeling,A,3,0.12,West Virginia,"Wheeling, West Virginia",27046
+WV,Wheeling,B,4,0.17,West Virginia,"Wheeling, West Virginia",27046
+WV,Wheeling,C,9,0.38,West Virginia,"Wheeling, West Virginia",27046
+WV,Wheeling,D,8,0.33,West Virginia,"Wheeling, West Virginia",27046
+NY,Elmira,A,1,0.04,New York,"Elmira, New York",27236
+NY,Elmira,B,5,0.21,New York,"Elmira, New York",27236
+NY,Elmira,C,10,0.42,New York,"Elmira, New York",27236
+NY,Elmira,D,8,0.33,New York,"Elmira, New York",27236
+MA,Malden,B,1,0.17,Massachusetts,"Malden, Massachusetts",27590
+MA,Malden,C,3,0.5,Massachusetts,"Malden, Massachusetts",27590
+MA,Malden,D,2,0.33,Massachusetts,"Malden, Massachusetts",27590
+MA,Milton,A,2,0.29,Massachusetts,"Milton, Massachusetts",27590
+MA,Milton,B,3,0.43,Massachusetts,"Milton, Massachusetts",27590
+MA,Milton,C,2,0.29,Massachusetts,"Milton, Massachusetts",27590
+MA,Melrose,A,3,0.38,Massachusetts,"Melrose, Massachusetts",28054
+MA,Melrose,B,4,0.5,Massachusetts,"Melrose, Massachusetts",28054
+MA,Melrose,C,1,0.12,Massachusetts,"Melrose, Massachusetts",28054
+MA,Saugus,B,2,0.33,Massachusetts,"Saugus, Massachusetts",28326
+MA,Saugus,C,1,0.17,Massachusetts,"Saugus, Massachusetts",28326
+MA,Saugus,D,3,0.5,Massachusetts,"Saugus, Massachusetts",28326
+TN,Nashville,A,1,0.11,Tennessee,"Nashville, Tennessee",29325
+TN,Nashville,B,2,0.22,Tennessee,"Nashville, Tennessee",29325
+TN,Nashville,C,3,0.33,Tennessee,"Nashville, Tennessee",29325
+TN,Nashville,D,3,0.33,Tennessee,"Nashville, Tennessee",29325
+NY,Poughkeepsie,A,1,0.06,New York,"Poughkeepsie, New York",30341
+NY,Poughkeepsie,B,4,0.24,New York,"Poughkeepsie, New York",30341
+NY,Poughkeepsie,C,7,0.41,New York,"Poughkeepsie, New York",30341
+NY,Poughkeepsie,D,5,0.29,New York,"Poughkeepsie, New York",30341
+NJ,Trenton,A,2,0.06,New Jersey,"Trenton, New Jersey",31161
+NJ,Trenton,B,10,0.28,New Jersey,"Trenton, New Jersey",31161
+NJ,Trenton,C,20,0.56,New Jersey,"Trenton, New Jersey",31161
+NJ,Trenton,D,4,0.11,New Jersey,"Trenton, New Jersey",31161
+MA,Needham,B,4,0.67,Massachusetts,"Needham, Massachusetts",31177
+MA,Needham,C,1,0.17,Massachusetts,"Needham, Massachusetts",31177
+MA,Needham,D,1,0.17,Massachusetts,"Needham, Massachusetts",31177
+MI,Jackson,A,1,0.08,Michigan,"Jackson, Michigan",32251
+MI,Jackson,B,5,0.38,Michigan,"Jackson, Michigan",32251
+MI,Jackson,C,5,0.38,Michigan,"Jackson, Michigan",32251
+MI,Jackson,D,2,0.15,Michigan,"Jackson, Michigan",32251
+MI,Bay City,A,1,0.06,Michigan,"Bay City, Michigan",32892
+MI,Bay City,B,3,0.18,Michigan,"Bay City, Michigan",32892
+MI,Bay City,C,5,0.29,Michigan,"Bay City, Michigan",32892
+MI,Bay City,D,8,0.47,Michigan,"Bay City, Michigan",32892
+MA,Lexington,A,4,0.31,Massachusetts,"Lexington, Massachusetts",33304
+MA,Lexington,B,4,0.31,Massachusetts,"Lexington, Massachusetts",33304
+MA,Lexington,C,5,0.38,Massachusetts,"Lexington, Massachusetts",33304
+OH,Lima,A,1,0.04,Ohio,"Lima, Ohio",36908
+OH,Lima,B,7,0.26,Ohio,"Lima, Ohio",36908
+OH,Lima,C,13,0.48,Ohio,"Lima, Ohio",36908
+OH,Lima,D,6,0.22,Ohio,"Lima, Ohio",36908
+MI,Muskegon,A,1,0.05,Michigan,"Muskegon, Michigan",37317
+MI,Muskegon,B,5,0.24,Michigan,"Muskegon, Michigan",37317
+MI,Muskegon,C,8,0.38,Michigan,"Muskegon, Michigan",37317
+MI,Muskegon,D,7,0.33,Michigan,"Muskegon, Michigan",37317
+OH,Warren,A,1,0.05,Ohio,"Warren, Ohio",38986
+OH,Warren,B,7,0.35,Ohio,"Warren, Ohio",38986
+OH,Warren,C,8,0.4,Ohio,"Warren, Ohio",38986
+OH,Warren,D,4,0.2,Ohio,"Warren, Ohio",38986
+MA,Holyoke Chicopee,A,2,0.08,Massachusetts,"Holyoke Chicopee, Massachusetts",40161
+MA,Holyoke Chicopee,B,7,0.27,Massachusetts,"Holyoke Chicopee, Massachusetts",40161
+MA,Holyoke Chicopee,C,10,0.38,Massachusetts,"Holyoke Chicopee, Massachusetts",40161
+MA,Holyoke Chicopee,D,7,0.27,Massachusetts,"Holyoke Chicopee, Massachusetts",40161
+KY,Covington,A,7,0.15,Kentucky,"Covington, Kentucky",40466
+KY,Covington,B,18,0.38,Kentucky,"Covington, Kentucky",40466
+KY,Covington,C,17,0.35,Kentucky,"Covington, Kentucky",40466
+KY,Covington,D,6,0.12,Kentucky,"Covington, Kentucky",40466
+PA,Wilkes-Barre,A,7,0.32,Pennsylvania,"Wilkes-Barre, Pennsylvania",40805
+PA,Wilkes-Barre,B,7,0.32,Pennsylvania,"Wilkes-Barre, Pennsylvania",40805
+PA,Wilkes-Barre,D,8,0.36,Pennsylvania,"Wilkes-Barre, Pennsylvania",40805
+RI,Woonsocket,A,1,0.12,Rhode Island,"Woonsocket, Rhode Island",41616
+RI,Woonsocket,B,2,0.25,Rhode Island,"Woonsocket, Rhode Island",41616
+RI,Woonsocket,C,1,0.12,Rhode Island,"Woonsocket, Rhode Island",41616
+RI,Woonsocket,D,4,0.5,Rhode Island,"Woonsocket, Rhode Island",41616
+NY,Binghamton-Johnson City,A,4,0.14,New York,"Binghamton-Johnson City, New York",44819
+NY,Binghamton-Johnson City,B,11,0.39,New York,"Binghamton-Johnson City, New York",44819
+NY,Binghamton-Johnson City,C,10,0.36,New York,"Binghamton-Johnson City, New York",44819
+NY,Binghamton-Johnson City,D,3,0.11,New York,"Binghamton-Johnson City, New York",44819
+MA,Arlington,A,3,0.18,Massachusetts,"Arlington, Massachusetts",45379
+MA,Arlington,B,10,0.59,Massachusetts,"Arlington, Massachusetts",45379
+MA,Arlington,C,4,0.24,Massachusetts,"Arlington, Massachusetts",45379
+MA,Everett,C,1,0.25,Massachusetts,"Everett, Massachusetts",46275
+MA,Everett,D,3,0.75,Massachusetts,"Everett, Massachusetts",46275
+WV,Charleston,A,5,0.12,West Virginia,"Charleston, West Virginia",47273
+WV,Charleston,B,11,0.26,West Virginia,"Charleston, West Virginia",47273
+WV,Charleston,C,14,0.33,West Virginia,"Charleston, West Virginia",47273
+WV,Charleston,D,13,0.3,West Virginia,"Charleston, West Virginia",47273
+NY,Niagara Falls,A,1,0.07,New York,"Niagara Falls, New York",47978
+NY,Niagara Falls,B,7,0.5,New York,"Niagara Falls, New York",47978
+NY,Niagara Falls,C,4,0.29,New York,"Niagara Falls, New York",47978
+NY,Niagara Falls,D,2,0.14,New York,"Niagara Falls, New York",47978
+MI,Saginaw,A,5,0.16,Michigan,"Saginaw, Michigan",48407
+MI,Saginaw,B,4,0.13,Michigan,"Saginaw, Michigan",48407
+MI,Saginaw,C,16,0.52,Michigan,"Saginaw, Michigan",48407
+MI,Saginaw,D,6,0.19,Michigan,"Saginaw, Michigan",48407
+PA,Harrisburg,A,4,0.08,Pennsylvania,"Harrisburg, Pennsylvania",49247
+PA,Harrisburg,B,15,0.31,Pennsylvania,"Harrisburg, Pennsylvania",49247
+PA,Harrisburg,C,9,0.19,Pennsylvania,"Harrisburg, Pennsylvania",49247
+PA,Harrisburg,D,20,0.42,Pennsylvania,"Harrisburg, Pennsylvania",49247
+NY,Troy,A,1,0.03,New York,"Troy, New York",49253
+NY,Troy,B,11,0.31,New York,"Troy, New York",49253
+NY,Troy,C,15,0.42,New York,"Troy, New York",49253
+NY,Troy,D,9,0.25,New York,"Troy, New York",49253
+TX,Galveston,A,1,0.25,Texas,"Galveston, Texas",50307
+TX,Galveston,B,1,0.25,Texas,"Galveston, Texas",50307
+TX,Galveston,C,1,0.25,Texas,"Galveston, Texas",50307
+TX,Galveston,D,1,0.25,Texas,"Galveston, Texas",50307
+MI,Battle Creek,A,3,0.08,Michigan,"Battle Creek, Michigan",51084
+MI,Battle Creek,B,8,0.21,Michigan,"Battle Creek, Michigan",51084
+MI,Battle Creek,C,17,0.44,Michigan,"Battle Creek, Michigan",51084
+MI,Battle Creek,D,11,0.28,Michigan,"Battle Creek, Michigan",51084
+TX,Port Arthur,A,1,0.14,Texas,"Port Arthur, Texas",54705
+TX,Port Arthur,B,2,0.29,Texas,"Port Arthur, Texas",54705
+TX,Port Arthur,C,1,0.14,Texas,"Port Arthur, Texas",54705
+TX,Port Arthur,D,3,0.43,Texas,"Port Arthur, Texas",54705
+IA,Dubuque,A,1,0.1,Iowa,"Dubuque, Iowa",58052
+IA,Dubuque,B,2,0.2,Iowa,"Dubuque, Iowa",58052
+IA,Dubuque,C,4,0.4,Iowa,"Dubuque, Iowa",58052
+IA,Dubuque,D,3,0.3,Iowa,"Dubuque, Iowa",58052
+OH,Springfield,A,7,0.19,Ohio,"Springfield, Ohio",58957
+OH,Springfield,B,9,0.24,Ohio,"Springfield, Ohio",58957
+OH,Springfield,C,13,0.35,Ohio,"Springfield, Ohio",58957
+OH,Springfield,D,8,0.22,Ohio,"Springfield, Ohio",58957
+MA,Brookline,A,2,0.17,Massachusetts,"Brookline, Massachusetts",59223
+MA,Brookline,B,5,0.42,Massachusetts,"Brookline, Massachusetts",59223
+MA,Brookline,C,4,0.33,Massachusetts,"Brookline, Massachusetts",59223
+MA,Brookline,D,1,0.08,Massachusetts,"Brookline, Massachusetts",59223
+MI,Pontiac,A,3,0.09,Michigan,"Pontiac, Michigan",59714
+MI,Pontiac,B,8,0.24,Michigan,"Pontiac, Michigan",59714
+MI,Pontiac,C,14,0.41,Michigan,"Pontiac, Michigan",59714
+MI,Pontiac,D,9,0.26,Michigan,"Pontiac, Michigan",59714
+NY,Utica,A,4,0.16,New York,"Utica, New York",59984
+NY,Utica,B,4,0.16,New York,"Utica, New York",59984
+NY,Utica,C,11,0.44,New York,"Utica, New York",59984
+NY,Utica,D,6,0.24,New York,"Utica, New York",59984
+IN,Terre Haute,A,3,0.11,Indiana,"Terre Haute, Indiana",60690
+IN,Terre Haute,B,4,0.15,Indiana,"Terre Haute, Indiana",60690
+IN,Terre Haute,C,9,0.33,Indiana,"Terre Haute, Indiana",60690
+IN,Terre Haute,D,11,0.41,Indiana,"Terre Haute, Indiana",60690
+OH,Hamilton,A,2,0.09,Ohio,"Hamilton, Ohio",62162
+OH,Hamilton,B,4,0.17,Ohio,"Hamilton, Ohio",62162
+OH,Hamilton,C,12,0.52,Ohio,"Hamilton, Ohio",62162
+OH,Hamilton,D,5,0.22,Ohio,"Hamilton, Ohio",62162
+IA,Council Bluffs,A,3,0.17,Iowa,"Council Bluffs, Iowa",62376
+IA,Council Bluffs,B,7,0.39,Iowa,"Council Bluffs, Iowa",62376
+IA,Council Bluffs,C,6,0.33,Iowa,"Council Bluffs, Iowa",62376
+IA,Council Bluffs,D,2,0.11,Iowa,"Council Bluffs, Iowa",62376
+MA,Haverhill,A,2,0.08,Massachusetts,"Haverhill, Massachusetts",63783
+MA,Haverhill,B,5,0.2,Massachusetts,"Haverhill, Massachusetts",63783
+MA,Haverhill,C,10,0.4,Massachusetts,"Haverhill, Massachusetts",63783
+MA,Haverhill,D,8,0.32,Massachusetts,"Haverhill, Massachusetts",63783
+OH,Lorain,B,3,0.17,Ohio,"Lorain, Ohio",63832
+OH,Lorain,C,9,0.5,Ohio,"Lorain, Ohio",63832
+OH,Lorain,D,6,0.33,Ohio,"Lorain, Ohio",63832
+OH,Youngstown,A,5,0.12,Ohio,"Youngstown, Ohio",64152
+OH,Youngstown,B,10,0.24,Ohio,"Youngstown, Ohio",64152
+OH,Youngstown,C,18,0.43,Ohio,"Youngstown, Ohio",64152
+OH,Youngstown,D,9,0.21,Ohio,"Youngstown, Ohio",64152
+NY,Schenectady,A,5,0.14,New York,"Schenectady, New York",65336
+NY,Schenectady,B,5,0.14,New York,"Schenectady, New York",65336
+NY,Schenectady,C,20,0.54,New York,"Schenectady, New York",65336
+NY,Schenectady,D,7,0.19,New York,"Schenectady, New York",65336
+WI,Oshkosh,B,4,0.17,Wisconsin,"Oshkosh, Wisconsin",66753
+WI,Oshkosh,C,8,0.33,Wisconsin,"Oshkosh, Wisconsin",66753
+WI,Oshkosh,D,12,0.5,Wisconsin,"Oshkosh, Wisconsin",66753
+IA,Waterloo,A,2,0.09,Iowa,"Waterloo, Iowa",67671
+IA,Waterloo,B,5,0.23,Iowa,"Waterloo, Iowa",67671
+IA,Waterloo,C,6,0.27,Iowa,"Waterloo, Iowa",67671
+IA,Waterloo,D,9,0.41,Iowa,"Waterloo, Iowa",67671
+IN,Muncie,B,3,0.12,Indiana,"Muncie, Indiana",67739
+IN,Muncie,C,15,0.6,Indiana,"Muncie, Indiana",67739
+IN,Muncie,D,7,0.28,Indiana,"Muncie, Indiana",67739
+OH,Canton,A,2,0.07,Ohio,"Canton, Ohio",70863
+OH,Canton,B,9,0.32,Ohio,"Canton, Ohio",70863
+OH,Canton,C,10,0.36,Ohio,"Canton, Ohio",70863
+OH,Canton,D,7,0.25,Ohio,"Canton, Ohio",70863
+IL,Decatur,A,2,0.08,Illinois,"Decatur, Illinois",71857
+IL,Decatur,B,9,0.38,Illinois,"Decatur, Illinois",71857
+IL,Decatur,C,6,0.25,Illinois,"Decatur, Illinois",71857
+IL,Decatur,D,7,0.29,Illinois,"Decatur, Illinois",71857
+CT,New Britain,A,2,0.22,Connecticut,"New Britain, Connecticut",72543
+CT,New Britain,B,4,0.44,Connecticut,"New Britain, Connecticut",72543
+CT,New Britain,C,2,0.22,Connecticut,"New Britain, Connecticut",72543
+CT,New Britain,D,1,0.11,Connecticut,"New Britain, Connecticut",72543
+NJ,Camden,A,4,0.11,New Jersey,"Camden, New Jersey",73742
+NJ,Camden,B,15,0.39,New Jersey,"Camden, New Jersey",73742
+NJ,Camden,C,13,0.34,New Jersey,"Camden, New Jersey",73742
+NJ,Camden,D,6,0.16,New Jersey,"Camden, New Jersey",73742
+MO,St. Joseph,A,3,0.09,Missouri,"St. Joseph, Missouri",75369
+MO,St. Joseph,B,7,0.21,Missouri,"St. Joseph, Missouri",75369
+MO,St. Joseph,C,8,0.24,Missouri,"St. Joseph, Missouri",75369
+MO,St. Joseph,D,15,0.45,Missouri,"St. Joseph, Missouri",75369
+MI,Kalamazoo,A,3,0.07,Michigan,"Kalamazoo, Michigan",76106
+MI,Kalamazoo,B,9,0.2,Michigan,"Kalamazoo, Michigan",76106
+MI,Kalamazoo,C,24,0.52,Michigan,"Kalamazoo, Michigan",76106
+MI,Kalamazoo,D,10,0.22,Michigan,"Kalamazoo, Michigan",76106
+WI,Racine,A,1,0.03,Wisconsin,"Racine, Wisconsin",76893
+WI,Racine,B,9,0.26,Wisconsin,"Racine, Wisconsin",76893
+WI,Racine,C,15,0.43,Wisconsin,"Racine, Wisconsin",76893
+WI,Racine,D,10,0.29,Wisconsin,"Racine, Wisconsin",76893
+VA,Lynchburg,A,4,0.12,Virginia,"Lynchburg, Virginia",80970
+VA,Lynchburg,B,3,0.09,Virginia,"Lynchburg, Virginia",80970
+VA,Lynchburg,C,15,0.47,Virginia,"Lynchburg, Virginia",80970
+VA,Lynchburg,D,10,0.31,Virginia,"Lynchburg, Virginia",80970
+MA,Somerville,B,2,0.25,Massachusetts,"Somerville, Massachusetts",81175
+MA,Somerville,C,6,0.75,Massachusetts,"Somerville, Massachusetts",81175
+IA,Sioux City,A,1,0.05,Iowa,"Sioux City, Iowa",82535
+IA,Sioux City,B,4,0.18,Iowa,"Sioux City, Iowa",82535
+IA,Sioux City,C,10,0.45,Iowa,"Sioux City, Iowa",82535
+IA,Sioux City,D,7,0.32,Iowa,"Sioux City, Iowa",82535
+NJ,Atlantic City,A,2,0.07,New Jersey,"Atlantic City, New Jersey",85201
+NJ,Atlantic City,B,7,0.26,New Jersey,"Atlantic City, New Jersey",85201
+NJ,Atlantic City,C,15,0.56,New Jersey,"Atlantic City, New Jersey",85201
+NJ,Atlantic City,D,3,0.11,New Jersey,"Atlantic City, New Jersey",85201
+MN,Duluth,A,4,0.12,Minnesota,"Duluth, Minnesota",85852
+MN,Duluth,B,7,0.21,Minnesota,"Duluth, Minnesota",85852
+MN,Duluth,C,13,0.39,Minnesota,"Duluth, Minnesota",85852
+MN,Duluth,D,8,0.24,Minnesota,"Duluth, Minnesota",85852
+MN,Duluth,E,1,0.03,Minnesota,"Duluth, Minnesota",85852
+UT,Ogden,A,3,0.13,Utah,"Ogden, Utah",87175
+UT,Ogden,B,6,0.26,Utah,"Ogden, Utah",87175
+UT,Ogden,C,5,0.22,Utah,"Ogden, Utah",87175
+UT,Ogden,D,9,0.39,Utah,"Ogden, Utah",87175
+NC,Asheville,A,3,0.14,North Carolina,"Asheville, North Carolina",92328
+NC,Asheville,B,10,0.48,North Carolina,"Asheville, North Carolina",92328
+NC,Asheville,C,4,0.19,North Carolina,"Asheville, North Carolina",92328
+NC,Asheville,D,4,0.19,North Carolina,"Asheville, North Carolina",92328
+MA,Quincy,B,6,0.55,Massachusetts,"Quincy, Massachusetts",94389
+MA,Quincy,C,4,0.36,Massachusetts,"Quincy, Massachusetts",94389
+MA,Quincy,D,1,0.09,Massachusetts,"Quincy, Massachusetts",94389
+MI,Flint,A,2,0.04,Michigan,"Flint, Michigan",95999
+MI,Flint,B,7,0.14,Michigan,"Flint, Michigan",95999
+MI,Flint,C,18,0.36,Michigan,"Flint, Michigan",95999
+MI,Flint,D,23,0.46,Michigan,"Flint, Michigan",95999
+CA,San Francisco,A,13,0.13,California,"San Francisco, California",96219
+CA,San Francisco,B,36,0.37,California,"San Francisco, California",96219
+CA,San Francisco,C,31,0.32,California,"San Francisco, California",96219
+CA,San Francisco,D,17,0.18,California,"San Francisco, California",96219
+NY,Albany,A,6,0.21,New York,"Albany, New York",96860
+NY,Albany,B,7,0.25,New York,"Albany, New York",96860
+NY,Albany,C,9,0.32,New York,"Albany, New York",96860
+NY,Albany,D,6,0.21,New York,"Albany, New York",96860
+VA,Roanoke,A,4,0.12,Virginia,"Roanoke, Virginia",99122
+VA,Roanoke,B,5,0.16,Virginia,"Roanoke, Virginia",99122
+VA,Roanoke,C,14,0.44,Virginia,"Roanoke, Virginia",99122
+VA,Roanoke,D,9,0.28,Virginia,"Roanoke, Virginia",99122
+IA,Davenport,A,2,0.08,Iowa,"Davenport, Iowa",102199
+IA,Davenport,B,7,0.29,Iowa,"Davenport, Iowa",102199
+IA,Davenport,C,11,0.46,Iowa,"Davenport, Iowa",102199
+IA,Davenport,D,4,0.17,Iowa,"Davenport, Iowa",102199
+IN,South Bend,A,6,0.14,Indiana,"South Bend, Indiana",102686
+IN,South Bend,B,13,0.3,Indiana,"South Bend, Indiana",102686
+IN,South Bend,C,13,0.3,Indiana,"South Bend, Indiana",102686
+IN,South Bend,D,11,0.26,Indiana,"South Bend, Indiana",102686
+CT,Waterbury,A,1,0.07,Connecticut,"Waterbury, Connecticut",107841
+CT,Waterbury,B,5,0.33,Connecticut,"Waterbury, Connecticut",107841
+CT,Waterbury,C,7,0.47,Connecticut,"Waterbury, Connecticut",107841
+CT,Waterbury,D,2,0.13,Connecticut,"Waterbury, Connecticut",107841
+CO,Pueblo,A,6,0.19,Colorado,"Pueblo, Colorado",111776
+CO,Pueblo,B,7,0.22,Colorado,"Pueblo, Colorado",111776
+CO,Pueblo,C,9,0.28,Colorado,"Pueblo, Colorado",111776
+CO,Pueblo,D,10,0.31,Colorado,"Pueblo, Colorado",111776
+IL,Peoria,A,4,0.17,Illinois,"Peoria, Illinois",112644
+IL,Peoria,B,6,0.26,Illinois,"Peoria, Illinois",112644
+IL,Peoria,C,9,0.39,Illinois,"Peoria, Illinois",112644
+IL,Peoria,D,4,0.17,Illinois,"Peoria, Illinois",112644
+IL,Springfield,A,4,0.13,Illinois,"Springfield, Illinois",115075
+IL,Springfield,B,5,0.16,Illinois,"Springfield, Illinois",115075
+IL,Springfield,C,7,0.23,Illinois,"Springfield, Illinois",115075
+IL,Springfield,D,15,0.48,Illinois,"Springfield, Illinois",115075
+MN,Rochester,A,1,0.25,Minnesota,"Rochester, Minnesota",117134
+MN,Rochester,B,1,0.25,Minnesota,"Rochester, Minnesota",117134
+MN,Rochester,C,1,0.25,Minnesota,"Rochester, Minnesota",117134
+MN,Rochester,D,1,0.25,Minnesota,"Rochester, Minnesota",117134
+TX,Beaumont,A,3,0.14,Texas,"Beaumont, Texas",117321
+TX,Beaumont,B,7,0.32,Texas,"Beaumont, Texas",117321
+TX,Beaumont,C,4,0.18,Texas,"Beaumont, Texas",117321
+TX,Beaumont,D,6,0.27,Texas,"Beaumont, Texas",117321
+TX,Beaumont,NA,2,0.09,Texas,"Beaumont, Texas",117321
+MI,Lansing,A,1,0.25,Michigan,"Lansing, Michigan",117488
+MI,Lansing,B,1,0.25,Michigan,"Lansing, Michigan",117488
+MI,Lansing,C,1,0.25,Michigan,"Lansing, Michigan",117488
+MI,Lansing,D,1,0.25,Michigan,"Lansing, Michigan",117488
+MA,Cambridge,A,1,0.06,Massachusetts,"Cambridge, Massachusetts",117822
+MA,Cambridge,B,7,0.44,Massachusetts,"Cambridge, Massachusetts",117822
+MA,Cambridge,C,6,0.38,Massachusetts,"Cambridge, Massachusetts",117822
+MA,Cambridge,D,2,0.12,Massachusetts,"Cambridge, Massachusetts",117822
+IN,Evansville,A,2,0.08,Indiana,"Evansville, Indiana",118414
+IN,Evansville,B,3,0.12,Indiana,"Evansville, Indiana",118414
+IN,Evansville,C,12,0.5,Indiana,"Evansville, Indiana",118414
+IN,Evansville,D,7,0.29,Indiana,"Evansville, Indiana",118414
+CT,Hartford,A,8,0.3,Connecticut,"Hartford, Connecticut",122549
+CT,Hartford,B,6,0.22,Connecticut,"Hartford, Connecticut",122549
+CT,Hartford,C,10,0.37,Connecticut,"Hartford, Connecticut",122549
+CT,Hartford,D,3,0.11,Connecticut,"Hartford, Connecticut",122549
+KS,Topeka,A,7,0.17,Kansas,"Topeka, Kansas",125819
+KS,Topeka,B,8,0.2,Kansas,"Topeka, Kansas",125819
+KS,Topeka,C,10,0.24,Kansas,"Topeka, Kansas",125819
+KS,Topeka,D,16,0.39,Kansas,"Topeka, Kansas",125819
+CT,"Stamford, Darien, and New Canaan",A,8,0.3,Connecticut,"Stamford, Darien, and New Canaan, Connecticut",130057
+CT,"Stamford, Darien, and New Canaan",B,10,0.37,Connecticut,"Stamford, Darien, and New Canaan, Connecticut",130057
+CT,"Stamford, Darien, and New Canaan",C,6,0.22,Connecticut,"Stamford, Darien, and New Canaan, Connecticut",130057
+CT,"Stamford, Darien, and New Canaan",D,3,0.11,Connecticut,"Stamford, Darien, and New Canaan, Connecticut",130057
+CT,New Haven,A,8,0.17,Connecticut,"New Haven, Connecticut",130381
+CT,New Haven,B,10,0.21,Connecticut,"New Haven, Connecticut",130381
+CT,New Haven,C,20,0.43,Connecticut,"New Haven, Connecticut",130381
+CT,New Haven,D,9,0.19,Connecticut,"New Haven, Connecticut",130381
+SC,Columbia,A,7,0.21,South Carolina,"Columbia, South Carolina",134057
+SC,Columbia,B,9,0.27,South Carolina,"Columbia, South Carolina",134057
+SC,Columbia,C,10,0.3,South Carolina,"Columbia, South Carolina",134057
+SC,Columbia,D,7,0.21,South Carolina,"Columbia, South Carolina",134057
+TX,Waco,A,4,0.16,Texas,"Waco, Texas",137779
+TX,Waco,B,6,0.24,Texas,"Waco, Texas",137779
+TX,Waco,C,10,0.4,Texas,"Waco, Texas",137779
+TX,Waco,D,5,0.2,Texas,"Waco, Texas",137779
+OH,Dayton,A,7,0.15,Ohio,"Dayton, Ohio",140444
+OH,Dayton,B,11,0.23,Ohio,"Dayton, Ohio",140444
+OH,Dayton,C,15,0.32,Ohio,"Dayton, Ohio",140444
+OH,Dayton,D,14,0.3,Ohio,"Dayton, Ohio",140444
+NY,Syracuse,A,5,0.1,New York,"Syracuse, New York",142553
+NY,Syracuse,B,19,0.39,New York,"Syracuse, New York",142553
+NY,Syracuse,C,19,0.39,New York,"Syracuse, New York",142553
+NY,Syracuse,D,6,0.12,New York,"Syracuse, New York",142553
+GA,Savannah,A,3,0.12,Georgia,"Savannah, Georgia",145492
+GA,Savannah,B,8,0.32,Georgia,"Savannah, Georgia",145492
+GA,Savannah,C,4,0.16,Georgia,"Savannah, Georgia",145492
+GA,Savannah,D,8,0.32,Georgia,"Savannah, Georgia",145492
+GA,Savannah,E,2,0.08,Georgia,"Savannah, Georgia",145492
+IL,Joliet,A,1,0.03,Illinois,"Joliet, Illinois",147323
+IL,Joliet,B,8,0.25,Illinois,"Joliet, Illinois",147323
+IL,Joliet,C,14,0.44,Illinois,"Joliet, Illinois",147323
+IL,Joliet,D,9,0.28,Illinois,"Joliet, Illinois",147323
+IL,Rockford,A,6,0.19,Illinois,"Rockford, Illinois",147441
+IL,Rockford,B,7,0.22,Illinois,"Rockford, Illinois",147441
+IL,Rockford,C,9,0.28,Illinois,"Rockford, Illinois",147441
+IL,Rockford,D,10,0.31,Illinois,"Rockford, Illinois",147441
+MS,Jackson,A,4,0.16,Mississippi,"Jackson, Mississippi",163778
+MS,Jackson,B,7,0.28,Mississippi,"Jackson, Mississippi",163778
+MS,Jackson,C,8,0.32,Mississippi,"Jackson, Mississippi",163778
+MS,Jackson,D,6,0.24,Mississippi,"Jackson, Mississippi",163778
+MO,Springfield,A,2,0.09,Missouri,"Springfield, Missouri",167601
+MO,Springfield,B,3,0.13,Missouri,"Springfield, Missouri",167601
+MO,Springfield,C,10,0.43,Missouri,"Springfield, Missouri",167601
+MO,Springfield,D,8,0.35,Missouri,"Springfield, Missouri",167601
+NC,Charlotte,A,3,0.09,North Carolina,"Charlotte, North Carolina",169177
+NC,Charlotte,B,7,0.21,North Carolina,"Charlotte, North Carolina",169177
+NC,Charlotte,C,13,0.38,North Carolina,"Charlotte, North Carolina",169177
+NC,Charlotte,D,11,0.32,North Carolina,"Charlotte, North Carolina",169177
+RI,Providence,A,3,0.12,Rhode Island,"Providence, Rhode Island",179472
+RI,Providence,B,9,0.36,Rhode Island,"Providence, Rhode Island",179472
+RI,Providence,C,11,0.44,Rhode Island,"Providence, Rhode Island",179472
+RI,Providence,D,2,0.08,Rhode Island,"Providence, Rhode Island",179472
+VA,Newport News,B,2,0.12,Virginia,"Newport News, Virginia",179582
+VA,Newport News,C,6,0.38,Virginia,"Newport News, Virginia",179582
+VA,Newport News,D,8,0.5,Virginia,"Newport News, Virginia",179582
+TN,Chattanooga,A,4,0.13,Tennessee,"Chattanooga, Tennessee",181370
+TN,Chattanooga,B,8,0.26,Tennessee,"Chattanooga, Tennessee",181370
+TN,Chattanooga,C,11,0.35,Tennessee,"Chattanooga, Tennessee",181370
+TN,Chattanooga,D,8,0.26,Tennessee,"Chattanooga, Tennessee",181370
+TN,Knoxville,A,4,0.09,Tennessee,"Knoxville, Tennessee",187487
+TN,Knoxville,B,12,0.27,Tennessee,"Knoxville, Tennessee",187487
+TN,Knoxville,C,16,0.36,Tennessee,"Knoxville, Tennessee",187487
+TN,Knoxville,D,12,0.27,Tennessee,"Knoxville, Tennessee",187487
+LA,Shreveport,A,2,0.08,Louisiana,"Shreveport, Louisiana",189890
+LA,Shreveport,B,4,0.15,Louisiana,"Shreveport, Louisiana",189890
+LA,Shreveport,C,10,0.38,Louisiana,"Shreveport, Louisiana",189890
+LA,Shreveport,D,10,0.38,Louisiana,"Shreveport, Louisiana",189890
+AL,Mobile,A,6,0.17,Alabama,"Mobile, Alabama",189994
+AL,Mobile,B,14,0.4,Alabama,"Mobile, Alabama",189994
+AL,Mobile,C,9,0.26,Alabama,"Mobile, Alabama",189994
+AL,Mobile,D,6,0.17,Alabama,"Mobile, Alabama",189994
+GA,Columbus,A,4,0.16,Georgia,"Columbus, Georgia",195418
+GA,Columbus,B,7,0.28,Georgia,"Columbus, Georgia",195418
+GA,Columbus,C,9,0.36,Georgia,"Columbus, Georgia",195418
+GA,Columbus,D,5,0.2,Georgia,"Columbus, Georgia",195418
+OH,Akron,A,11,0.16,Ohio,"Akron, Ohio",197375
+OH,Akron,B,19,0.28,Ohio,"Akron, Ohio",197375
+OH,Akron,C,24,0.36,Ohio,"Akron, Ohio",197375
+OH,Akron,D,13,0.19,Ohio,"Akron, Ohio",197375
+AR,Little Rock,A,5,0.14,Arkansas,"Little Rock, Arkansas",198067
+AR,Little Rock,B,12,0.34,Arkansas,"Little Rock, Arkansas",198067
+AR,Little Rock,C,10,0.29,Arkansas,"Little Rock, Arkansas",198067
+AR,Little Rock,D,8,0.23,Arkansas,"Little Rock, Arkansas",198067
+AL,Montgomery,A,3,0.16,Alabama,"Montgomery, Alabama",199054
+AL,Montgomery,B,3,0.16,Alabama,"Montgomery, Alabama",199054
+AL,Montgomery,C,6,0.32,Alabama,"Montgomery, Alabama",199054
+AL,Montgomery,D,7,0.37,Alabama,"Montgomery, Alabama",199054
+TX,Amarillo,A,3,0.15,Texas,"Amarillo, Texas",199225
+TX,Amarillo,B,2,0.1,Texas,"Amarillo, Texas",199225
+TX,Amarillo,C,6,0.3,Texas,"Amarillo, Texas",199225
+TX,Amarillo,D,9,0.45,Texas,"Amarillo, Texas",199225
+IL,Aurora,A,2,0.09,Illinois,"Aurora, Illinois",199326
+IL,Aurora,B,5,0.23,Illinois,"Aurora, Illinois",199326
+IL,Aurora,C,6,0.27,Illinois,"Aurora, Illinois",199326
+IL,Aurora,D,9,0.41,Illinois,"Aurora, Illinois",199326
+MI,Grand Rapids,A,6,0.1,Michigan,"Grand Rapids, Michigan",199417
+MI,Grand Rapids,B,20,0.33,Michigan,"Grand Rapids, Michigan",199417
+MI,Grand Rapids,C,28,0.46,Michigan,"Grand Rapids, Michigan",199417
+MI,Grand Rapids,D,7,0.11,Michigan,"Grand Rapids, Michigan",199417
+UT,Salt Lake City,A,4,0.14,Utah,"Salt Lake City, Utah",200133
+UT,Salt Lake City,B,7,0.24,Utah,"Salt Lake City, Utah",200133
+UT,Salt Lake City,C,9,0.31,Utah,"Salt Lake City, Utah",200133
+UT,Salt Lake City,D,9,0.31,Utah,"Salt Lake City, Utah",200133
+NY,Rochester,A,12,0.2,New York,"Rochester, New York",206357
+NY,Rochester,B,16,0.26,New York,"Rochester, New York",206357
+NY,Rochester,C,26,0.43,New York,"Rochester, New York",206357
+NY,Rochester,D,7,0.11,New York,"Rochester, New York",206357
+AL,Birmingham,A,3,0.05,Alabama,"Birmingham, Alabama",210928
+AL,Birmingham,B,16,0.27,Alabama,"Birmingham, Alabama",210928
+AL,Birmingham,C,20,0.33,Alabama,"Birmingham, Alabama",210928
+AL,Birmingham,D,21,0.35,Alabama,"Birmingham, Alabama",210928
+IA,Des Moines,A,7,0.29,Iowa,"Des Moines, Iowa",215408
+IA,Des Moines,B,6,0.25,Iowa,"Des Moines, Iowa",215408
+IA,Des Moines,C,6,0.25,Iowa,"Des Moines, Iowa",215408
+IA,Des Moines,D,5,0.21,Iowa,"Des Moines, Iowa",215408
+WA,Tacoma,A,4,0.09,Washington,"Tacoma, Washington",215766
+WA,Tacoma,B,10,0.21,Washington,"Tacoma, Washington",215766
+WA,Tacoma,C,25,0.53,Washington,"Tacoma, Washington",215766
+WA,Tacoma,D,8,0.17,Washington,"Tacoma, Washington",215766
+WA,Spokane,A,8,0.15,Washington,"Spokane, Washington",219185
+WA,Spokane,B,13,0.25,Washington,"Spokane, Washington",219185
+WA,Spokane,C,21,0.4,Washington,"Spokane, Washington",219185
+WA,Spokane,D,11,0.21,Washington,"Spokane, Washington",219185
+VA,Richmond,A,7,0.15,Virginia,"Richmond, Virginia",229233
+VA,Richmond,B,15,0.31,Virginia,"Richmond, Virginia",229233
+VA,Richmond,C,14,0.29,Virginia,"Richmond, Virginia",229233
+VA,Richmond,D,12,0.25,Virginia,"Richmond, Virginia",229233
+VA,Norfolk,A,5,0.05,Virginia,"Norfolk, Virginia",244300
+VA,Norfolk,B,16,0.17,Virginia,"Norfolk, Virginia",244300
+VA,Norfolk,C,45,0.47,Virginia,"Norfolk, Virginia",244300
+VA,Norfolk,D,30,0.31,Virginia,"Norfolk, Virginia",244300
+NC,Winston-Salem,A,1,0.04,North Carolina,"Winston-Salem, North Carolina",245787
+NC,Winston-Salem,B,5,0.22,North Carolina,"Winston-Salem, North Carolina",245787
+NC,Winston-Salem,C,11,0.48,North Carolina,"Winston-Salem, North Carolina",245787
+NC,Winston-Salem,D,6,0.26,North Carolina,"Winston-Salem, North Carolina",245787
+NY,Buffalo,A,7,0.21,New York,"Buffalo, New York",255805
+NY,Buffalo,B,13,0.39,New York,"Buffalo, New York",255805
+NY,Buffalo,C,8,0.24,New York,"Buffalo, New York",255805
+NY,Buffalo,D,5,0.15,New York,"Buffalo, New York",255805
+FL,St. Petersburg,A,5,0.1,Florida,"St. Petersburg, Florida",264001
+FL,St. Petersburg,B,9,0.19,Florida,"St. Petersburg, Florida",264001
+FL,St. Petersburg,C,20,0.42,Florida,"St. Petersburg, Florida",264001
+FL,St. Petersburg,D,14,0.29,Florida,"St. Petersburg, Florida",264001
+IN,Fort Wayne,A,5,0.11,Indiana,"Fort Wayne, Indiana",268378
+IN,Fort Wayne,B,15,0.32,Indiana,"Fort Wayne, Indiana",268378
+IN,Fort Wayne,C,20,0.43,Indiana,"Fort Wayne, Indiana",268378
+IN,Fort Wayne,D,7,0.15,Indiana,"Fort Wayne, Indiana",268378
+OH,Toledo,A,12,0.15,Ohio,"Toledo, Ohio",275116
+OH,Toledo,B,22,0.28,Ohio,"Toledo, Ohio",275116
+OH,Toledo,C,35,0.45,Ohio,"Toledo, Ohio",275116
+OH,Toledo,D,9,0.12,Ohio,"Toledo, Ohio",275116
+NC,Durham,A,5,0.21,North Carolina,"Durham, North Carolina",276341
+NC,Durham,B,6,0.25,North Carolina,"Durham, North Carolina",276341
+NC,Durham,C,7,0.29,North Carolina,"Durham, North Carolina",276341
+NC,Durham,D,6,0.25,North Carolina,"Durham, North Carolina",276341
+NE,Lincoln,A,2,0.09,Nebraska,"Lincoln, Nebraska",286388
+NE,Lincoln,B,10,0.45,Nebraska,"Lincoln, Nebraska",286388
+NE,Lincoln,C,8,0.36,Nebraska,"Lincoln, Nebraska",286388
+NE,Lincoln,D,2,0.09,Nebraska,"Lincoln, Nebraska",286388
+NC,Greensboro,A,3,0.14,North Carolina,"Greensboro, North Carolina",294395
+NC,Greensboro,B,6,0.29,North Carolina,"Greensboro, North Carolina",294395
+NC,Greensboro,C,9,0.43,North Carolina,"Greensboro, North Carolina",294395
+NC,Greensboro,D,3,0.14,North Carolina,"Greensboro, North Carolina",294395
+MO,St. Louis,A,31,0.25,Missouri,"St. Louis, Missouri",304709
+MO,St. Louis,B,40,0.32,Missouri,"St. Louis, Missouri",304709
+MO,St. Louis,C,39,0.31,Missouri,"St. Louis, Missouri",304709
+MO,St. Louis,D,16,0.13,Missouri,"St. Louis, Missouri",304709
+MN,St. Paul,A,6,0.17,Minnesota,"St. Paul, Minnesota",305877
+MN,St. Paul,B,12,0.33,Minnesota,"St. Paul, Minnesota",305877
+MN,St. Paul,C,8,0.22,Minnesota,"St. Paul, Minnesota",305877
+MN,St. Paul,D,10,0.28,Minnesota,"St. Paul, Minnesota",305877
+CA,Stockton,A,3,0.07,California,"Stockton, California",311103
+CA,Stockton,B,15,0.35,California,"Stockton, California",311103
+CA,Stockton,C,14,0.33,California,"Stockton, California",311103
+CA,Stockton,D,11,0.26,California,"Stockton, California",311103
+OH,Cleveland,A,31,0.16,Ohio,"Cleveland, Ohio",383331
+OH,Cleveland,B,55,0.29,Ohio,"Cleveland, Ohio",383331
+OH,Cleveland,C,76,0.4,Ohio,"Cleveland, Ohio",383331
+OH,Cleveland,D,28,0.15,Ohio,"Cleveland, Ohio",383331
+KS,Wichita,A,10,0.26,Kansas,"Wichita, Kansas",390566
+KS,Wichita,B,5,0.13,Kansas,"Wichita, Kansas",390566
+KS,Wichita,C,6,0.16,Kansas,"Wichita, Kansas",390566
+KS,Wichita,D,17,0.45,Kansas,"Wichita, Kansas",390566
+LA,New Orleans,A,10,0.07,Louisiana,"New Orleans, Louisiana",391249
+LA,New Orleans,B,23,0.17,Louisiana,"New Orleans, Louisiana",391249
+LA,New Orleans,C,52,0.39,Louisiana,"New Orleans, Louisiana",391249
+LA,New Orleans,D,49,0.37,Louisiana,"New Orleans, Louisiana",391249
+FL,Tampa,A,4,0.17,Florida,"Tampa, Florida",395912
+FL,Tampa,B,5,0.21,Florida,"Tampa, Florida",395912
+FL,Tampa,C,9,0.38,Florida,"Tampa, Florida",395912
+FL,Tampa,D,6,0.25,Florida,"Tampa, Florida",395912
+OK,Tulsa,A,7,0.33,Oklahoma,"Tulsa, Oklahoma",402441
+OK,Tulsa,B,4,0.19,Oklahoma,"Tulsa, Oklahoma",402441
+OK,Tulsa,C,6,0.29,Oklahoma,"Tulsa, Oklahoma",402441
+OK,Tulsa,D,4,0.19,Oklahoma,"Tulsa, Oklahoma",402441
+MN,Minneapolis,A,14,0.2,Minnesota,"Minneapolis, Minnesota",424536
+MN,Minneapolis,B,22,0.31,Minnesota,"Minneapolis, Minnesota",424536
+MN,Minneapolis,C,20,0.29,Minnesota,"Minneapolis, Minnesota",424536
+MN,Minneapolis,D,14,0.2,Minnesota,"Minneapolis, Minnesota",424536
+FL,Miami,A,15,0.2,Florida,"Miami, Florida",461080
+FL,Miami,B,25,0.34,Florida,"Miami, Florida",461080
+FL,Miami,C,21,0.28,Florida,"Miami, Florida",461080
+FL,Miami,D,13,0.18,Florida,"Miami, Florida",461080
+NE,Omaha,A,1,0.11,Nebraska,"Omaha, Nebraska",479529
+NE,Omaha,B,2,0.22,Nebraska,"Omaha, Nebraska",479529
+NE,Omaha,C,3,0.33,Nebraska,"Omaha, Nebraska",479529
+NE,Omaha,D,3,0.33,Nebraska,"Omaha, Nebraska",479529
+GA,Atlanta,A,9,0.08,Georgia,"Atlanta, Georgia",497642
+GA,Atlanta,B,28,0.25,Georgia,"Atlanta, Georgia",497642
+GA,Atlanta,C,42,0.38,Georgia,"Atlanta, Georgia",497642
+GA,Atlanta,D,32,0.29,Georgia,"Atlanta, Georgia",497642
+CA,Sacramento,A,3,0.05,California,"Sacramento, California",503482
+CA,Sacramento,B,16,0.29,California,"Sacramento, California",503482
+CA,Sacramento,C,30,0.54,California,"Sacramento, California",503482
+CA,Sacramento,D,7,0.12,California,"Sacramento, California",503482
+WI,Milwaukee Co.,A,10,0.09,Wisconsin,"Milwaukee Co., Wisconsin",592649
+WI,Milwaukee Co.,B,29,0.26,Wisconsin,"Milwaukee Co., Wisconsin",592649
+WI,Milwaukee Co.,C,49,0.44,Wisconsin,"Milwaukee Co., Wisconsin",592649
+WI,Milwaukee Co.,D,24,0.21,Wisconsin,"Milwaukee Co., Wisconsin",592649
+MD,Baltimore,A,6,0.1,Maryland,"Baltimore, Maryland",602274
+MD,Baltimore,B,22,0.37,Maryland,"Baltimore, Maryland",602274
+MD,Baltimore,C,22,0.37,Maryland,"Baltimore, Maryland",602274
+MD,Baltimore,D,9,0.15,Maryland,"Baltimore, Maryland",602274
+OK,Oklahoma City,A,13,0.14,Oklahoma,"Oklahoma City, Oklahoma",649821
+OK,Oklahoma City,B,12,0.13,Oklahoma,"Oklahoma City, Oklahoma",649821
+OK,Oklahoma City,C,32,0.36,Oklahoma,"Oklahoma City, Oklahoma",649821
+OK,Oklahoma City,D,33,0.37,Oklahoma,"Oklahoma City, Oklahoma",649821
+OR,Portland,A,16,0.17,Oregon,"Portland, Oregon",650380
+OR,Portland,B,30,0.33,Oregon,"Portland, Oregon",650380
+OR,Portland,C,37,0.4,Oregon,"Portland, Oregon",650380
+OR,Portland,D,9,0.1,Oregon,"Portland, Oregon",650380
+TN,Memphis,A,7,0.27,Tennessee,"Memphis, Tennessee",650910
+TN,Memphis,B,8,0.31,Tennessee,"Memphis, Tennessee",650910
+TN,Memphis,C,8,0.31,Tennessee,"Memphis, Tennessee",650910
+TN,Memphis,D,3,0.12,Tennessee,"Memphis, Tennessee",650910
+MI,Detroit,A,15,0.06,Michigan,"Detroit, Michigan",672351
+MI,Detroit,B,39,0.16,Michigan,"Detroit, Michigan",672351
+MI,Detroit,C,122,0.51,Michigan,"Detroit, Michigan",672351
+MI,Detroit,D,62,0.26,Michigan,"Detroit, Michigan",672351
+TX,El Paso,A,4,0.17,Texas,"El Paso, Texas",679879
+TX,El Paso,B,6,0.26,Texas,"El Paso, Texas",679879
+TX,El Paso,C,6,0.26,Texas,"El Paso, Texas",679879
+TX,El Paso,D,7,0.3,Texas,"El Paso, Texas",679879
+CO,Denver,A,6,0.11,Colorado,"Denver, Colorado",715878
+CO,Denver,B,12,0.22,Colorado,"Denver, Colorado",715878
+CO,Denver,C,20,0.37,Colorado,"Denver, Colorado",715878
+CO,Denver,D,16,0.3,Colorado,"Denver, Colorado",715878
+WA,Seattle,A,12,0.2,Washington,"Seattle, Washington",741251
+WA,Seattle,B,19,0.32,Washington,"Seattle, Washington",741251
+WA,Seattle,C,18,0.3,Washington,"Seattle, Washington",741251
+WA,Seattle,D,11,0.18,Washington,"Seattle, Washington",741251
+IN,Indianapolis,A,5,0.07,Indiana,"Indianapolis, Indiana",869387
+IN,Indianapolis,B,17,0.23,Indiana,"Indianapolis, Indiana",869387
+IN,Indianapolis,C,24,0.33,Indiana,"Indianapolis, Indiana",869387
+IN,Indianapolis,D,27,0.37,Indiana,"Indianapolis, Indiana",869387
+OH,Columbus,A,8,0.09,Ohio,"Columbus, Ohio",889079
+OH,Columbus,B,32,0.35,Ohio,"Columbus, Ohio",889079
+OH,Columbus,C,36,0.4,Ohio,"Columbus, Ohio",889079
+OH,Columbus,D,15,0.16,Ohio,"Columbus, Ohio",889079
+TX,Fort Worth,A,8,0.15,Texas,"Fort Worth, Texas",892221
+TX,Fort Worth,B,9,0.17,Texas,"Fort Worth, Texas",892221
+TX,Fort Worth,C,16,0.31,Texas,"Fort Worth, Texas",892221
+TX,Fort Worth,D,18,0.35,Texas,"Fort Worth, Texas",892221
+TX,Fort Worth,NA,1,0.02,Texas,"Fort Worth, Texas",892221
+FL,Jacksonville,A,2,0.17,Florida,"Jacksonville, Florida",902488
+FL,Jacksonville,B,4,0.33,Florida,"Jacksonville, Florida",902488
+FL,Jacksonville,C,5,0.42,Florida,"Jacksonville, Florida",902488
+FL,Jacksonville,D,1,0.08,Florida,"Jacksonville, Florida",902488
+TX,Austin,A,3,0.17,Texas,"Austin, Texas",965872
+TX,Austin,B,7,0.39,Texas,"Austin, Texas",965872
+TX,Austin,C,1,0.06,Texas,"Austin, Texas",965872
+TX,Austin,D,7,0.39,Texas,"Austin, Texas",965872
+CA,San Diego,A,17,0.22,California,"San Diego, California",1029409
+CA,San Diego,B,27,0.36,California,"San Diego, California",1029409
+CA,San Diego,C,22,0.29,California,"San Diego, California",1029409
+CA,San Diego,D,10,0.13,California,"San Diego, California",1029409
+CA,San Jose,A,2,0.05,California,"San Jose, California",1029409
+CA,San Jose,B,7,0.19,California,"San Jose, California",1029409
+CA,San Jose,C,17,0.46,California,"San Jose, California",1029409
+CA,San Jose,D,11,0.3,California,"San Jose, California",1029409
+TX,Dallas,A,10,0.22,Texas,"Dallas, Texas",1338846
+TX,Dallas,B,15,0.33,Texas,"Dallas, Texas",1338846
+TX,Dallas,C,12,0.26,Texas,"Dallas, Texas",1338846
+TX,Dallas,D,9,0.2,Texas,"Dallas, Texas",1338846
+TX,San Antonio,A,2,0.1,Texas,"San Antonio, Texas",1529133
+TX,San Antonio,B,8,0.4,Texas,"San Antonio, Texas",1529133
+TX,San Antonio,C,7,0.35,Texas,"San Antonio, Texas",1529133
+TX,San Antonio,D,3,0.15,Texas,"San Antonio, Texas",1529133
+PA,Philadelphia,A,10,0.12,Pennsylvania,"Philadelphia, Pennsylvania",1581531
+PA,Philadelphia,B,28,0.34,Pennsylvania,"Philadelphia, Pennsylvania",1581531
+PA,Philadelphia,C,18,0.22,Pennsylvania,"Philadelphia, Pennsylvania",1581531
+PA,Philadelphia,D,26,0.32,Pennsylvania,"Philadelphia, Pennsylvania",1581531
+AZ,Phoenix,A,5,0.2,Arizona,"Phoenix, Arizona",1658422
+AZ,Phoenix,B,8,0.32,Arizona,"Phoenix, Arizona",1658422
+AZ,Phoenix,C,4,0.16,Arizona,"Phoenix, Arizona",1658422
+AZ,Phoenix,D,8,0.32,Arizona,"Phoenix, Arizona",1658422
+TX,Houston,A,4,0.1,Texas,"Houston, Texas",2313238
+TX,Houston,B,11,0.28,Texas,"Houston, Texas",2313238
+TX,Houston,C,15,0.38,Texas,"Houston, Texas",2313238
+TX,Houston,D,10,0.25,Texas,"Houston, Texas",2313238
+IL,Chicago,A,37,0.06,Illinois,"Chicago, Illinois",2699347
+IL,Chicago,B,132,0.23,Illinois,"Chicago, Illinois",2699347
+IL,Chicago,C,277,0.48,Illinois,"Chicago, Illinois",2699347
+IL,Chicago,D,134,0.23,Illinois,"Chicago, Illinois",2699347
+CA,Los Angeles,A,57,0.14,California,"Los Angeles, California",3973278
+CA,Los Angeles,B,121,0.29,California,"Los Angeles, California",3973278
+CA,Los Angeles,C,167,0.4,California,"Los Angeles, California",3973278
+CA,Los Angeles,D,71,0.17,California,"Los Angeles, California",3973278
