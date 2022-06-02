@@ -3,8 +3,8 @@ import RechartsPie from './RechartsPie';
 import { Marker } from 'react-map-gl';
 import { scaleLinear } from 'd3-scale';
 
-const MAX_SIZE = 30
-const MIN_SIZE = 1
+const MAX_SIZE = 25
+const MIN_SIZE = 3
 
 export const RedliningMarkers = ({
     data=[],

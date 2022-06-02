@@ -12,18 +12,37 @@ export default function Home() {
 
       <main className={styles.main}>
         <h1 className={styles.title}>
-          The Geospatial Legacy of American Apartheid
+          The Atlas of Black Spatial Experience
         </h1>
+        <div className={styles.grid}>
         <Link href="/map">
           <a
             className={styles.card}
           >
             <h2>Map</h2>
             <p>
-              Histories of slavery, sundown towns, and other racist practices.
+              The Geospatial Legacy of American Apartheid
+              <br/><br/>
             </p>
           </a>
           </Link>
+        <Link href="/map">
+          <a
+            className={`${styles.card} ${styles.comingSoon}`}
+          >
+            <h2>Map</h2>
+            <p>
+              Black Resilience, Resistance, and Revolts against Slavery (coming soon)
+            </p>
+          </a>
+          </Link>
+          <p className={styles.description}>
+            The Atlas of the Black Spatial Experience is a project of the Center for Urban Health Equity (CUHE) at Morgan State University.
+            The concept design has been led by CUHE research Lawrence Brown and Senior Project Manager Jehan Reaves.
+            The Atlas design work has been led by the Healthy Regions + Policy Lab at the University of Chicago. The lab is led by Dr. Marynia Kolak.
+            Map coding and visual design has been led by Senior Software Engineer Dylan Halpern.
+          </p>
+        </div>
       </main>
 
       {/* <footer className={styles.footer}>

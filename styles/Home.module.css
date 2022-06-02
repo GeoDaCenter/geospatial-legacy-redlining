@@ -43,6 +43,7 @@
   margin: 0;
   line-height: 1.15;
   font-size: 4rem;
+  padding-bottom: 1em;
 }
 
 .title,
@@ -113,4 +114,9 @@
     width: 100%;
     flex-direction: column;
   }
+}
+
+.comingSoon {
+  opacity:0.5;
+  pointer-events: none;
 }

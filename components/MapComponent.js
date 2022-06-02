@@ -4,6 +4,8 @@ import { StaticMap, MapContext, NavigationControl } from 'react-map-gl';
 import styles from '../styles/Map.module.css'
 import { scaleLinear } from "d3-scale";
 import { RedliningMarkers } from "./RedliningMarkers";
+import {CSVLoader} from '@loaders.gl/csv';
+import {load} from '@loaders.gl/core';
 
 const MAP_STYLE = 'mapbox://styles/csds-hiplab/cl1guqfvq001514s96n92ltey';
 
@@ -22,7 +24,10 @@ export default function MapComponent({
     // data loading for marker data
     const [holcCentroids, setHolcCentroids] = useState([])
     useEffect(() => {
-        fetch('/geojson/HOLC_centroids_cities.json').then(r => r.json()).then(setHolcCentroids)
+        const fetchData = async () => {
+            await load('csv/holc_city_centroids.csv', CSVLoader, {header: true, dynamicTyping: true}).then(setHolcCentroids)
+        }
+        fetchData()
     }, [])
 
     // tooltip data
