@@ -7,34 +7,22 @@ import { Button, ListBox, Item, Flex, Checkbox } from '@adobe/react-spectrum';
 import Settings from '@spectrum-icons/workflow/Settings';
 import { WebMercatorViewport } from '@deck.gl/core';
 import { fitBounds } from "@math.gl/web-mercator";
-import Legend from '../components/Legend';
+import Legend from '../components/LegendEntry';
 import Icon from '../components/Icon';
 import {
-  LayerList,
-  bins,
-  layerSettings,
-  attributions,
+  layers,
+  technicalLayerSettings
 } from '../map.config'
-import JSONInput from 'react-json-editor-ajrm';
-import locale from 'react-json-editor-ajrm/locale/en';
+import { MapAttributions } from '../components/MapAttributions';
+import { MapLegend } from '../components/MapLegends';
 
 export default function Home() {
   const router = useRouter()
   const { query } = router;
+
   const [activeLayers, setLayers] = useState(query.l ? query.l.split('|') : ['slavery'])
   const [hasPanned, setHasPanned] = useState(false)
-  const [availableLayers, setAvailableLayers] = useState(LayerList)
   const [portal, setPortal] = useState(null)
-  const [currBins, setCurrBins] = useState(bins)
-  const [tempBins, setTempBins] = useState(bins)
-  const [currLayerSettings, setCurrLayerSettings] = useState(layerSettings)
-  const [tempLayerSettings, setTempLayerSettings] = useState(layerSettings)
-  const [changeBins, setChangeBins] = useState(false)
-
-  useEffect(() => {
-    setTempBins(currBins)
-    // es-lint-disable-next-line react-hooks/exhaustive-deps
-  }, [JSON.stringify(currBins)])
 
   const [view, setView] = useState({
     latitude: 0,
@@ -122,49 +110,34 @@ export default function Home() {
       <section className={styles.sidebar}>
         <h3>Map Layers</h3>
         <Flex direction="column">
-          {LayerList.map(layer => <Checkbox key={layer.id} isSelected={activeLayers.includes(layer.id)} onChange={() => handleSelection(layer.id)}>
-            {layer.label}
+          {Object.keys(layers).map(layer => <Checkbox key={layer} isSelected={activeLayers.includes(layer)} onChange={() => handleSelection(layer)}>
+            {layers[layer].label}
           </Checkbox>
           )}
         </Flex>
-        {/* <ListBox
-          selectionMode="multiple"
-          aria-label="Choose map layers"
-          width="size-2400"
-          items={LayerList}
-          // defaultSelectedKeys={activeLayers}
-          onSelectionChange={selected => setLayers(Array.from(selected))}
-        >
-          {(item) => <Item>{item.label}</Item>}
-        </ListBox> */}
-        <Button onClick={() => setChangeBins(prev => !prev)} isQuiet><Settings aria-label="Settings" /> Settings</Button>
       </section>
       <section className={styles.map}>
-        <MapComponent {...{ activeLayers, view, setView, bins: currBins, layerSettings: currLayerSettings, setPortal }} />
+        <MapComponent 
+          activeLayers={activeLayers} 
+          view={view} 
+          setView={setView} 
+          setPortal={setPortal}
+          layers={layers} 
+          technicalLayerSettings={technicalLayerSettings}
+          />
       </section>
       <section className={styles.bottomRight}>
         <div className={styles.legend}>
-          {activeLayers.map(layer => <Legend key={`Legend-${layer}`} {...{ ...currBins[layer], title: LayerList.find(f => f.id === layer)?.label }} />)}
+          <MapLegend activeLayers={activeLayers} layers={layers} />
         </div>
         <div className={styles.attributions}>
-          {activeLayers.map(layer => <span key={`attribution-${layer}`}>{attributions[layer] || ''}</span>)} Map Data: © <a href="https://www.mapbox.com/about/maps/" target="_blank" rel="noreferrer">Mapbox</a> © <a href="https://www.openstreetmap.org/about/" target="_blank" rel="noreferrer">OpenStreetMap</a> <a href="https://www.mapbox.com/contribute/#/?q=&l=2.1234%2F32.9547%2F11" target="_blank" rel="noreferrer">Improve this map</a>
+          <MapAttributions activeLayers={activeLayers} layers={layers} />
         </div>
       </section>
       {!!portal && <section className={styles.portal}>
         <a href={portal} target="_blank" rel="noreferrer"><Icon iconName="flag" /> Some remote pages may not work in this panel, click here to open in a new tab.</a>
         <button className={styles.closePortal} onClick={() => setPortal(null)}>Close this panel</button>
         <iframe width="100%" height="100%" src={portal} frameBorder="0" allowFullScreen={false} />
-      </section>}
-      {!!changeBins && <section className={styles.jsonPortal}>
-        <JSONInput
-          id='jsonEditr'
-          placeholder={tempBins}
-          onChange={({ jsObject }) => setTempBins(jsObject)}
-          width='100%'
-          height='100%'
-        />
-        <Button onClick={() => setCurrBins(tempBins)}>commit changes</Button>
-        <Button onClick={() => setChangeBins(false)}>close</Button>
       </section>}
     </div>
   )

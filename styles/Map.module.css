@@ -130,3 +130,21 @@
         color:rgb(116, 248, 209);
     }
 }
+
+.showLayersButton {
+    display:none;
+}
+
+.showLegendButton {
+    display:none;
+}
+
+@media (max-width: 768px){   
+    .sidebar, .legend, .attributions {
+        max-width: 100%;
+        width:100%;
+    }
+    .hidden {
+        display:none;
+    }
+}
