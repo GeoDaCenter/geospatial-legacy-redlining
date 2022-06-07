@@ -4,7 +4,7 @@
 
 1. Make sure to install [Github](https://desktop.github.com/) or [Git](https://git-scm.com/book/en/v2/Getting-Started-The-Command-Line), and [Nodejs](https://nodejs.org/en/)
 2. After installing node, install yarn using `npm i -g yarn`
-3. Clone this repository to your computer
+3. Clone this repository to your computer using `git clone https://github.com/GeoDaCenter/geospatial-legacy-redlining.git`
 4. In your terminal from this directory, run `yarn`. This will install the packages needed to use this repository
 5. Again in your terminal, run `yarn dev` to begin development. Your terminal will give you a local website URL to view the development version of the site. Usually, this is `localhost:3000`. Enter this in your browser to see the site.
 6. Open your code editor of choice like [Visual Studio Code](https://code.visualstudio.com/) and begin making changes.
