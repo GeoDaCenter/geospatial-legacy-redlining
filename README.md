@@ -10,7 +10,7 @@
 6. Open your code editor of choice like [Visual Studio Code](https://code.visualstudio.com/) and begin making changes.
 7. When you are happy with your edits, [commit and push](https://github.com/git-guides/git-commit) your changes to Github. This will trigger the deploy process and your changes should go live momentarily
 
-Finally, to access Mapbox services, you'll need an API key that you can get by signing up on Mapbox.com. The free tier is generous. After you sign up, create a file in the root folder of this repo called ".env.local" and add a line like the example below with your API key:
+Finally, to access Mapbox services, you'll need an access token (API key) that you can get by signing up on Mapbox.com. The free tier is generous. After you sign up, create a file in the root folder of this repo called ".env.local" and add a line like the example below with your API key:
 
 ```
 NEXT_PUBLIC_MAPBOX_TOKEN=pk.abcdefghijklmnop
@@ -43,17 +43,35 @@ Non-tracked folders and files:
 
 To update data, simply modify the relevant data files in the `public` folder and commit changes to the github repo. Data are available as comma separated values (CSV) data (in `public/csv`) and GeoJSON spatial data (in `public/geojson`).
 
-## Data Schemas
 
+## Deploying this website
+
+Deploying is taking this code and making it public. You'll need to use a hosting provider to do this, ideally on that supports. 
+
+1. Make a mapbox account and get an [API key](https://docs.mapbox.com/help/getting-started/access-tokens/)
+2. Make a [Netlify account](https://netlify.com/) 
+3. Create a new site on Netlify, and add your Mapbox API key as an environment variable called `NEXT_PUBLIC_MAPBOX_TOKEN`
+  - Your other settings should look like this:
+  -  Base directory: Not set
+  -  Build command: npm run build
+  -  Publish directory: .next
+4. Your site should now build! See other [Netlify settings](https://docs.netlify.com/domains-https/custom-domains/) for more information.
+
+## Embedding this website
+
+You can use an iframe HTML element to embed this map in another site using the url: https://geospatial-legacy.netlify.app/
+
+An example might look like this:
+
+```html
+<iframe src="https://geospatial-legacy.netlify.app/" width="100%" height="600px"></iframe>
+```
+
+## Data Schemas
 ### Spatial data (geojson) - public/geojson
 
-1860 County Census
-// todo
 HOLC Boundaries
 // todo
-Lynchings
-// todo
-
 ### Tabular data (csv) - public/csv
 
 **Sundown Towns (1870-1970)**
@@ -84,7 +102,6 @@ Columns:
 - x: longitude in WGS84, revised based on Isaac Rand's work
 - y: longitude in WGS84, revised based on Isaac Rand's work
 
-
 **White Supremacist Attacks on Black Communities (1824-1974)**
 
 Attribution: White Supremacist Attacks on Black Communities (1824-1974): Liam Hogan and contributors, 2015.
@@ -102,6 +119,79 @@ Columns
 - lon: longitude in WGS84 projection
 - lat: latitude in WGS84 projection
 
+
+**1860 County Census**
+
+Attribution: Population Density, 1860. Social Explorer, (based on data from U.S. Census Bureau; National Historic GIS; accessed 2022).
+
+Columns
+- Name: Name of the place or geography
+- Qualifying Area Name: Full area name of the place or geography
+- Land Area: Land area in square miles
+- Summary Level: The geographic unit from census classifications, in this dataset 050 (County)
+- FIPS: Full state and county Federal Information Processing Standards (FIPS) code
+- State FIPS: State FIPS code
+- County FIPS: County FIPS code
+- GISJOIN: GIS Join column for census data
+- Total Population: Total population as of 1860
+- Total Area in Square Miles: Total area in square miles as of 1860
+- Urban Population of Places With 2,500 People and Over: Urban population of places with 2,500 people and over as of 1860
+- Urban Population of Cities With 25,000 People and Over: Urban population of cities with 25,000 people and over as of 1860
+- White Population: White population as of 1860
+- White: Male: White male population as of 1860
+- White: Female: White female population as of 1860
+- Colored Population: People of color population, as of 1860
+- Colored: Male: Male people of color population, as of 1860
+- Colored: Female: Female people of color population, as of 1860
+- Free Coloured Population: Free people of color population, as of 1860
+- Free Colored: Male: Free male people of color population, as of 1860
+- Free Colored: Female: Free female people of color population, as of 1860
+- Slave Population: Enslaved persons population, as of 1860
+- Slave: Male: Enslaved male persons population, as of 1860
+- Slave: Female: Enslaved female persons population, as of 1860
+- Percent Pop Urban: Percent of population living in urban places
+- Percent Pop Place or Town: Percent of population living in towns or places
+- Percent Slave Pop: Percent of population enslaved persons
+- Percent Pop Free of Color: Percent of population free people of color
+- ID: Historic GIS column, not used
+- ID2: Historic GIS column, not used
+- OBJECTID: Historic GIS column, not used
+- DECADE: Historic GIS column, not used
+- NHGISNAM: Historic GIS column, not used
+- NHGISST: Historic GIS column, not used
+- NHGISCTY: Historic GIS column, not used
+- ICPSRST: Historic GIS column, not used
+- ICPSRCTY: Historic GIS column, not used
+
+**Lynchings in America by County, 1870-1950**
+
+Attribution: Number of Lynchings in County (1870-1950), Equal Justice Initiative. https://eji.org/reports/lynching-in-america/
+
+Columns
+
+- NAME: Name of place or geography
+- COUNTY: Name of county
+- STATE: Name of state
+- STATE_ABBREV: Two letter state abbreviation
+- LYNCHINGS: Number of lynchings recorded from 1870 to 1950
+- GEO_ID: Geographic identifier
+- LSAD: Geographic unit (county)
+- CENSUSAREA: Area according census geographic
+
+
+**Home owner lown corporation (HOLC) Boundaries and Grading (Redlining)**
+
+Attribution: Redlining: Nelson and contributors - Mapping Inequality, University of Richmond, 2022. CC NC-SA 4.0. https://dsl.richmond.edu/panorama/redlining/
+
+Columns
+
+- state: Two letter state STUSPS abbreviation
+- city: Name of city
+- name: Full name of the place or geography
+- holc_id: HOLC identifier
+- hold_grade: HOLC grade (A,B,C,D)
+- neighborho: Neighborhood number
+- area_descr: Description of sub-grades assigned to this area, as a nested JSON object
 ## Updating Map Design and Text
 
 To update map colors, labels, or attribution information, edit the `map.config.js` file in the repository root. There are two main pieces of information to work on here:
