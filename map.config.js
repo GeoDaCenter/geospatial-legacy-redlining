@@ -7,7 +7,7 @@ import {CSVLoader} from '@loaders.gl/csv';
 // layer configuration
 const layers = {
   slavery: {
-    label: "Percentage of Enslaved People per County (1860)",
+    label: "Percentage of Enslaved People per County in 1860",
     data: "geojson/1860_counties.geojson",
     attribution: "Enslaved Persons: US Decennial Census 1860, Accessed via Social Explorer. ",
     mapBins: [20, 40, 60, 80, 100],
