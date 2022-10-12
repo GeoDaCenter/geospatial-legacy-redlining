@@ -39,7 +39,7 @@ export default function Home() {
           <p className={styles.description}>
             The Atlas of the Black Spatial Experience is a project of the Center for Urban Health Equity (CUHE) at Morgan State University.
             The concept design has been led by CUHE research Lawrence Brown and Senior Project Manager Jehan Reaves.
-            The Atlas design work has been led by the Healthy Regions + Policy Lab at the University of Chicago. The lab is led by Dr. Marynia Kolak.
+            The Atlas design work has been led by the Healthy Regions + Policy Lab at the University of Illinois at Urbana-Champagne. The lab is led by Dr. Marynia Kolak.
             Map coding and visual design has been led by Senior Software Engineer Dylan Halpern.
           </p>
         </div>
